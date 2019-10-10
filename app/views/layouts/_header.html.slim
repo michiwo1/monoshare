@@ -1,0 +1,20 @@
+headr
+.shadow.p-3.mb-0.bg-white.rounded
+ nav.navbar.navbar-light.bg-white.d-flex.justify-content-center
+  - if user_signed_in?
+    strong= link_to current_user.username, pages_show_path
+    = link_to 'プロフィール変更', edit_user_registration_path
+    = link_to 'ログアウト', destroy_user_session_path, method: :delete
+  - else
+    = link_to 'サインアップ', new_user_registration_path
+    = link_to 'ログイン', new_user_session_path
+
+  a.navbar-brand href="/" MONOシェア
+  form.form-inline
+   input.form-control.mr-sm-2 aria-label="Search" placeholder="何かお探しですか？" type="search" /
+   button.btn.btn-outline-success.my-2.my-sm-0 type="submit"  検索
+
+ .d-flex.justify-content-end.mr-5
+  <!-- =link_to 'ユーザー登録',new_user_path,class:'btn btn-danger mr-3' -->
+  button.btn.btn-outline-danger.mr-3 type="button"  新規登録
+  button.btn.btn-outline-primary type="button"  ログイン
