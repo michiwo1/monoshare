@@ -1,3 +1,23 @@
-h1
-  | こんにちは、#{current_user.username}さん
-p ユーザー用ページです。
+=render partial: 'layouts/header',locals:{item:@item}
+h1 タスクの詳細
+
+table.table.table-hover
+ tbody
+  tr
+   th= Item.human_attribute_name(:id)
+   td= @item.id
+  tr
+   th= Item.human_attribute_name(:tittle)
+   td= @item.tittle
+  tr
+   th= Item.human_attribute_name(:content)
+   td= @item.content
+  tr
+   th= Item.human_attribute_name(:create_at)
+   td= @item.created_at
+  tr
+   th= Item.human_attribute_name(:updated_at)
+   td= @item.updated_at
+
+= link_to '編集',edit_item_path,class: 'btn btn-primary mr-3'
+= link_to '削除',@item,method: :delete, remote:true , data:{ confirm:"タスク「#{@item.tittle}」を削除します。よろしいですか？"}, class: 'btn btn-danger delete'

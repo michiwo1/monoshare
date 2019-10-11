@@ -1,3 +1,5 @@
+=render partial: 'layouts/header',locals:{item:@item}
+=render partial: 'items/carousel'
 main
  h2.mt-3.mb-3.d-flex.justify-content-center シェア一覧
 
@@ -9,6 +11,8 @@ main
      rect fill="#868e96" height="100%" width="100%"
      text dy=".3em" fill="#dee2e6" x="50%" y="50%"
     .card-body
-       h4.card-text =item.tittle
+       h4.card-text =link_to item.tittle, item
        p =item.content
        p =item.created_at
+
+=render partial: 'layouts/footer',locals:{item:@item}

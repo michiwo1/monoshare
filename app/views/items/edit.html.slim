@@ -1,0 +1,14 @@
+=render partial: 'layouts/header',locals:{item:@item}
+h1 タスクの編集
+
+= form_with model:@item,local:true do |f|
+  .form-group
+    =f.label :tittle
+    =f.text_field :tittle,class: 'form-control',id: 'task_tittle'
+  .form-group
+    =f.label :content
+    =f.text_area :content,row:5, class: 'form-control',id: 'task_content'
+  =f.submit nil,class: 'btn btn-primary'
+
+
+ 
