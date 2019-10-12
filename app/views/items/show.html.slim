@@ -3,6 +3,12 @@ h1 タスクの詳細
 
 table.table.table-hover
  tbody
+
+  tr
+   = link_to(@user.id, "/users/#{@user.id}")
+   th= User.human_attribute_name(:user_id)
+   td= @user.id
+
   tr
    th= Item.human_attribute_name(:id)
    td= @item.id
@@ -18,6 +24,7 @@ table.table.table-hover
   tr
    th= Item.human_attribute_name(:updated_at)
    td= @item.updated_at
+
 
 = link_to '編集',edit_item_path,class: 'btn btn-primary mr-3'
 = link_to '削除',@item,method: :delete, remote:true , data:{ confirm:"タスク「#{@item.tittle}」を削除します。よろしいですか？"}, class: 'btn btn-danger delete'

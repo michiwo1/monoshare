@@ -1,3 +1,8 @@
-- provide(:title, @user.name)
-h1
-  | My page (#{@user.name})
+h2= @user.id
+
+- @user.items.each do |item|
+    /! 指定されたコードを貼り付けてください
+      .item-right
+        .item-user-name
+          = link_to(item.user.name, "/users/#{item.user.id}")
+        = link_to(item.content, "/items/#{item.id}")
