@@ -39,6 +39,14 @@ class ItemsController < ApplicationController
    redirect_to items_url,notice:"シェア品『#{item.tittle}』削除しました"
   end
 
+  def ensure_correct_user
+    @item = item.find_by(id:params[:id])
+    if @item.user_id != @current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to("/items/index")
+    end
+  end
+
   private
 
   def item_params

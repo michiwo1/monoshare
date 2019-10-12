@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+before_action :authenticate_user!
   def index
     @users = User.all
   end
 
   def set_item
-      @item = current_user.item.find(params[:id])
+      @users = current_user.user.find(params[:id])
   end
 
   def show

@@ -4,9 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :items
+  has_many :items,dependent: :destroy
 
-  def items
-    return item.where(user_id: self.id)
-  end
+
 end
