@@ -9,6 +9,7 @@ headr
  .d-flex.justify-content-end.mr-5
   <!-- =link_to 'ユーザー登録',new_user_path,class:'btn btn-danger mr-3' -->
   - if user_signed_in?
+    = link_to 'ユーザー一覧', users_path,class:'button btn btn-outline-info mr-3 '
     = link_to 'シェアする', new_item_path,class:'button btn btn-outline-info mr-3 '
     = link_to 'プロフィール変更', edit_user_registration_path,class:'button btn btn-outline-danger mr-3 '
     = link_to 'ログアウト', destroy_user_session_path, method: :delete,class:'button btn btn-outline-secondary '
