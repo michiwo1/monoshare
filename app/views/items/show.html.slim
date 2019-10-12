@@ -6,8 +6,6 @@ table.table.table-hover
 
   tr
    = link_to(@user.username, "/users/#{@user.id}")
-   th= User.human_attribute_name(:user_id)
-   td= @user.id
 
   tr
    th= Item.human_attribute_name(:id)

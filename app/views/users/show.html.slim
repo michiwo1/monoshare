@@ -2,3 +2,14 @@ h2= @user.username
 P=@user.email
 - if @user.id==current_user.id
  = link_to 'プロフィール変更', edit_user_registration_path(current_user.id),class:'button btn btn-outline-danger mr-3 '
+
+
+card.card-deck
+  - @user.items.each do |item|
+   .card style=("width: 18rem;")
+    svg.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="180" preserveaspectratio=("xMidYMid slice") role="img" width="100%" xmlns="http://www.w3.org/2000/svg"
+     title Placeholder
+     rect fill="#868e96" height="100%" width="100%"
+     text dy=".3em" fill="#dee2e6" x="50%" y="50%"
+    .card-body
+       h4.card-text = link_to item.tittle, item_path(item.id)
