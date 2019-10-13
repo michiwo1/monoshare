@@ -1,5 +1,8 @@
+=render partial: 'layouts/header',locals:{item:@item}
 h2= @user.username
 P=@user.email
+p=@user.self_introduction
+p=@user.request
 - if @user.id==current_user.id
  = link_to 'プロフィール変更', edit_user_registration_path(current_user.id),class:'button btn btn-outline-danger mr-3 '
 
