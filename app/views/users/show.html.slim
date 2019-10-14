@@ -1,4 +1,5 @@
 =render partial: 'layouts/header',locals:{item:@item}
+img src="#{@user.image}" width="100" height="100" class="rounded-circle mb-2"
 h2= @user.username
 P=@user.email
 p=@user.self_introduction

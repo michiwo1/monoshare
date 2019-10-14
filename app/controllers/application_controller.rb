@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
         devise_parameter_sanitizer.permit(:account_update, keys: [:username])
         devise_parameter_sanitizer.permit(:account_update, keys: [:self_introduction])
         devise_parameter_sanitizer.permit(:account_update, keys: [:request])
+        devise_parameter_sanitizer.permit(:account_update, keys: [:image])
       end
 
   private
