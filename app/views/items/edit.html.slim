@@ -1,7 +1,13 @@
 =render partial: 'layouts/header',locals:{item:@item}
 h1 タスクの編集
-
 = form_with model:@item,local:true do |f|
+  - if @item.image?
+   = image_tag @item.image.url
+  - else
+   = image_tag("/images/icon/no-image.png")
+  = f.label "画像をアップロード"
+  br/
+  = f.file_field :image
   .form-group
     =f.label :tittle
     =f.text_field :tittle,class: 'form-control',id: 'task_tittle'
@@ -9,6 +15,3 @@ h1 タスクの編集
     =f.label :content
     =f.text_area :content,row:5, class: 'form-control',id: 'task_content'
   =f.submit nil,class: 'btn btn-primary'
-
-
- 

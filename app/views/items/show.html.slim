@@ -1,12 +1,13 @@
 =render partial: 'layouts/header',locals:{item:@item}
 h1 タスクの詳細
-
+- if @item.image?
+ = image_tag @item.image.thumb.url
+- else
+ = image_tag("/images/icon/no-image.png")
 table.table.table-hover
  tbody
-
   tr
-   = link_to(@user.username, "/users/#{@user.id}")
-
+   = link_to(@item.user.username, "/users/#{@item.user_id}")
   tr
    th= Item.human_attribute_name(:id)
    td= @item.id
@@ -24,6 +25,6 @@ table.table.table-hover
    td= @item.updated_at
 
 
-- if @user.id==current_user.id
+- if user_signed_in? && @item.user_id==current_user.id
  = link_to '編集',edit_item_path,class: 'btn btn-primary mr-3'
  = link_to '削除',@item,method: :delete, remote:true , data:{ confirm:"タスク「#{@item.tittle}」を削除します。よろしいですか？"}, class: 'btn btn-danger delete'

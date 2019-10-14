@@ -4,10 +4,8 @@ class ItemsController < ApplicationController
   end
 
   def show
-
     @item = Item.find_by(id: params[:id])
     # 変数@userを定義してください
-    @user = @item.user
   end
 
   def new
@@ -50,6 +48,9 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:tittle,:content)
+    params.require(:item).permit(:tittle,:content,:image)
   end
+
+
+
 end

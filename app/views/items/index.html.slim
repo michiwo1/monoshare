@@ -3,16 +3,18 @@
 main
  h2.mt-3.mb-3.d-flex.justify-content-center シェア一覧
 
+
+- @items.each_slice(4) do |items|
  card.card-deck
-  - @items.each do |item|
-   .card style=("width: 18rem;")
-    svg.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="180" preserveaspectratio=("xMidYMid slice") role="img" width="100%" xmlns="http://www.w3.org/2000/svg"
-     title Placeholder
-     rect fill="#868e96" height="100%" width="100%"
-     text dy=".3em" fill="#dee2e6" x="50%" y="50%"
-    .card-body
-       h4.card-text =link_to item.tittle, item
-       p =item.content
-       p =item.created_at
+   - items.each do |item|
+     .card.mb-4 style=("max-width: 21rem;")
+      img.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="180" preserveaspectratio=("xMidYMid slice") role="img" width="100%" src="/public/uploads/item/image/13/work1.png"
+       title Placeholder
+       rect fill="#868e96" height="100%" width="100%"
+       text dy=".3em" fill="#dee2e6" x="50%" y="50%"
+      .card-body
+         h4.card-text =link_to item.tittle, item
+         p =item.content
+         p =item.created_at
 
 =render partial: 'layouts/footer',locals:{item:@item}

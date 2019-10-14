@@ -9,6 +9,8 @@ gem 'bootstrap'
 gem 'rails-i18n'
 gem 'devise'
 gem 'omniauth-twitter'
+gem 'carrierwave'
+gem 'mini_magick'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
 # Use postgresql as the database for Active Record
