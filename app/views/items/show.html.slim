@@ -1,13 +1,15 @@
 =render partial: 'layouts/header',locals:{item:@item}
 h1 タスクの詳細
+=link_to user_path(@item.user.id)
+ img src="#{@item.user.image}" width="50" height="50" class="rounded-circle mb-2 mr-2"
+p= link_to(@item.user.username, "/users/#{@item.user_id}")
+
 - if @item.image?
  = image_tag @item.image.thumb.url
 - else
  = image_tag("/images/icon/no-image.png")
 table.table.table-hover
  tbody
-  tr
-   = link_to(@item.user.username, "/users/#{@item.user_id}")
   tr
    th= Item.human_attribute_name(:id)
    td= @item.id
