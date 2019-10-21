@@ -1,19 +1,22 @@
 =render partial: 'layouts/header',locals:{item:@item}
 =render partial: 'items/carousel'
 h2.mt-3.mb-3.d-flex.justify-content-center シェア一覧
+
+
+
 - @items.each_slice(4) do |items|
  card.card-deck
    - items.each do |item|
-     .card.mb-4 style=("max-width: 21rem;")
-      =link_to item
-        img.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="180" preserveaspectratio=("xMidYMid slice") role="img" width="100%" src="#{item.image}"
-         title Placeholder
-         rect fill="#868e96" height="100%" width="100%"
-         text dy=".3em" fill="#dee2e6" x="50%" y="50%"
-      .card-body
-         =link_to user_path(item.user.id)
-          img src="#{item.user.image}" width="50" height="50" class="rounded-circle mb-2 mr-2"
-         h5.d-inline =link_to item.tittle, item
-         p =item.content
+         .card.mb-4 style=("max-width: 21rem;")
+          =link_to item
+            img.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="180" preserveaspectratio=("xMidYMid slice") role="img" width="100%" src="#{item.image}"
+             title Placeholder
+             rect fill="#868e96" height="100%" width="100%"
+             text dy=".3em" fill="#dee2e6" x="50%" y="50%"
+          .card-body
+             =link_to user_path(item.user.id)
+              img src="#{item.user.image}" width="50" height="50" class="rounded-circle mb-2 mr-2"
+             h5.d-inline =link_to item.tittle, item
+             p =item.content
 
 =render partial: 'layouts/footer',locals:{item:@item}

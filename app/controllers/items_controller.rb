@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @items = Item.all
+    @items = Item.where(state:nil)
   end
 
   def show
@@ -45,11 +47,43 @@ class ItemsController < ApplicationController
     end
   end
 
+  def follows
+    item = Item.find(params[:id])
+    @items = item.followings
+  end
+
+  def followers
+    item = Item.find(params[:id])
+    @items = item.followers
+  end
+
+  def approve
+    # こう記述することで、「current_userに関連したFavoriteクラスの新しいインスタンス」が作成可能。
+    # つまり、favorite.user_id = current_user.idが済んだ状態で生成されている。
+    # buildはnewと同じ意味で、アソシエーションしながらインスタンスをnewする時に形式的に使われる。
+    rental = current_user.rentals.build(item_id: params[:item_id])
+    rental.save
+    item = Item.find(params[:item_id])
+    item.state = 2
+    item.save!
+    redirect_to items_path
+  end
+
+  def reject
+    rental = Rental.find_by(item_id: params[:item_id])
+    rental.destroy
+    redirect_to items_path
+    item = Item.find(params[:item_id])
+    item.state = nil
+    item.save!
+  end
+ 　
   private
 
   def item_params
-    params.require(:item).permit(:tittle,:content,:image)
+    params.require(:item).permit(:tittle,:content,:image,:state)
   end
+
 
 
 

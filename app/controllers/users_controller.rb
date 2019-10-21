@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-before_action :authenticate_user!
+before_action :authenticate_user!, except: [:index]
+
   def index
     @users = User.all
   end
@@ -11,4 +12,18 @@ before_action :authenticate_user!
   def show
      @user = User.find(params[:id])
   end
+
+
+  def applying
+    @user = current_user
+    @rentals_items = @user.rentals_items.where(state:'1')# 追加s
+  end
+
+  def waiting
+    @user = current_user.items
+    @waiting_items = @user.where(state:'1')
+  end
+
+
+
 end

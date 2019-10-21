@@ -1,11 +1,22 @@
 Rails.application.routes.draw do
-  
+
+
   root to:'items#index'
   devise_for :users
 
 
-  resources :items
-  resources :users, :only => [:index, :show]
+  resources :items do
+    resource :rentals, only: [:create, :destroy]
+    post :approve, on: :member
+    post :reject, on: :member
+  end
+
+  resources :users do
+    get :applying, on: :member # 追加
+    get :waiting, on: :member
+    get :lending, on: :member
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end

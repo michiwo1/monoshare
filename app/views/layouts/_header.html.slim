@@ -10,10 +10,14 @@ headr
   <!-- =link_to 'ユーザー登録',new_user_path,class:'btn btn-danger mr-3' -->
   - if user_signed_in?
 
-
+    = link_to '貸し出し中一覧', lending_user_path(current_user.id),class:'button btn btn-outline-success mr-3 '
+    = link_to '承認待ち一覧', waiting_user_path(current_user.id),class:'button btn btn-outline-info mr-3 '
+    = link_to '申請中一覧',  applying_user_path(current_user.id),class:'button btn btn-outline-info mr-3 '
     = link_to 'ユーザー一覧', users_path,class:'button btn btn-outline-info mr-3 '
     = link_to 'シェアする', new_item_path,class:'button btn btn-outline-info mr-3 '
-    = link_to 'プロフィール', user_path(current_user.id),class:'button btn btn-outline-danger mr-3 '
+    = link_to user_path(current_user.id)
+     img src="#{current_user.image}" width="35" height="35" class="rounded-circle mr-1 "
+    = link_to "#{current_user.username}さんプロフィール", user_path(current_user.id),class:'button btn btn-outline-danger mr-3 '
     = link_to 'ログアウト', destroy_user_session_path, method: :delete,class:'button btn btn-outline-secondary '
   - else
     = link_to 'サインアップ', new_user_registration_path,class:'button btn btn-outline-danger mr-3 '

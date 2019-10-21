@@ -1,12 +1,17 @@
 =render partial: 'layouts/header',locals:{item:@item}
+
+
+
 img src="#{@user.image}" width="100" height="100" class="rounded-circle mb-2"
 h2= @user.username
+h2=@user.id
 P=@user.email
 p=@user.self_introduction
 p=@user.request
 - if @user.id==current_user.id
  = link_to 'プロフィール変更', edit_user_registration_path(current_user.id),class:'button btn btn-outline-danger mr-3 '
 
+h1.my-5 自分のシェア品一覧
 
 - @user.items.each_slice(4) do |items|
  card.card-deck
@@ -18,7 +23,7 @@ p=@user.request
           rect fill="#868e96" height="100%" width="100%"
           text dy=".3em" fill="#dee2e6" x="50%" y="50%"
        .card-body
-          =link_to user_path(current_user.id)
+          =link_to user_path
            img src="#{item.user.image}" width="50" height="50" class="rounded-circle mb-2 mr-2"
           h5.d-inline =link_to item.tittle, item
           p =item.content
