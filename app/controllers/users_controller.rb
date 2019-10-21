@@ -24,6 +24,16 @@ before_action :authenticate_user!, except: [:index]
     @waiting_items = @user.where(state:'1')
   end
 
+  def lending
+    @user = current_user.items
+    @lending_items = @user.where(state:'2')
+  end
+
+  def waiting
+    @user = current_user.items
+    @waiting_items = @user.where(state:'1')
+  end
+
 
 
 end
