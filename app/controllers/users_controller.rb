@@ -29,9 +29,9 @@ before_action :authenticate_user!, except: [:index]
     @lending_items = @user.where(state:'2')
   end
 
-  def waiting
-    @user = current_user.items
-    @waiting_items = @user.where(state:'1')
+  def borrowing
+    @user = current_user
+    @borrowing_items = @user.rentals_items.where(state:'2')
   end
 
 

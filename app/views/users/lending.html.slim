@@ -1,5 +1,5 @@
 =render partial: 'layouts/header',locals:{item:@item}
-h1 貸し出し一覧
+h1.mb-5 貸し出し一覧
 
 - @lending_items.each_slice(4) do |items|
   card.card-deck
@@ -17,6 +17,11 @@ h1 貸し出し一覧
            img src="#{item.user.image}" width="50" height="50" class="rounded-circle mb-2 mr-2"
           h5.d-inline =link_to item.tittle, item
           p =item.content
-          =link_to item.rentals.last.user
-           img src="#{item.rentals.last.user.image}" width="25" height="25" class="rounded-circle mb-2 mr-2 "
-          p.d-inline = link_to "#{item.rentals.last.user.username}さんに貸し出しています。",item.rentals.last.user
+          hr
+          .d-flex.justify-content-center.mb-2
+            img src="#{item.user.image}" width="25" height="25" class="rounded-circle mb-2 mr-2 "
+            a = "⇨"
+            =link_to item.rentals.last.user
+             img src="#{item.rentals.last.user.image}" width="25" height="25" class="rounded-circle mb-2 mx-2 "
+          p= link_to "#{item.rentals.last.user.username}さんに貸し出しています。",item.rentals.last.user,class:'ml-4'
+          a = link_to "返却済み",complete_item_path(item_id: item.id), method: :post,class:'button btn btn-outline-success mx-5 d-block '
