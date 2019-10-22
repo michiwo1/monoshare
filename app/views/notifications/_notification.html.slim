@@ -1,0 +1,19 @@
+- visitor = notification.visitor
+- visited = notification.visited
+.col-md-6.mx-auto
+  .form-inline
+    span
+      = link_to user_path(visitor) do
+        img src="#{visitor.image}" width="24" height="24" class="rounded-circle mr-1 "
+        strong
+          = visitor.username
+      = 'さんが'
+
+      - case notification.action
+      - when 'apply' then
+        = link_to "あなたの投稿(#{notification.item.tittle})", notification.item, style: "font-weight: bold;"
+        = "に申請しました"
+
+  .small.text-muted.text-right
+    = time_ago_in_words(notification.created_at).upcase
+  hr

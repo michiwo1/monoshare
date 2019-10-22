@@ -11,9 +11,9 @@ p= link_to(@item.user.username, "/users/#{@item.user_id}")
 
 - if current_user != @item.user
   - if @item.rentaled_by?(current_user)
-   p = link_to "申請をキャンセルする", item_rentals_path(@item.id), method: :delete,class:'button btn btn-outline-primary mx-3 my-3'
+   p = link_to "申請をキャンセルする",cancel_item_path(item_id: @item.id), method: :post,class:'button btn btn-outline-primary mx-3 my-3 '
   - else
-   p = link_to "申請する", item_rentals_path(@item.id), method: :post,class:'button btn btn-outline-danger mx-3 my-3 '
+   p = link_to "申請する",apply_item_path(item_id: @item.id), method: :post,class:'button btn btn-outline-danger mx-3 my-3 '
 
 
 table.table.table-hover

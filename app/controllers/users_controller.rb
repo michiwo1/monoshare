@@ -13,7 +13,6 @@ before_action :authenticate_user!, except: [:index]
      @user = User.find(params[:id])
   end
 
-
   def applying
     @user = current_user
     @rentals_items = @user.rentals_items.where(state:'1')# 追加s
@@ -35,5 +34,11 @@ before_action :authenticate_user!, except: [:index]
   end
 
 
+  def notifications
+    @notifications = current_user.passive_notifications
+    @notifications.where(checked: false).each do |notification|
+      notification.update_attributes(checked: true)
+    end
+  end
 
 end
