@@ -1,4 +1,4 @@
-=render partial: 'layouts/header',locals:{item:@item}
+=render partial: 'layouts/header2',locals:{item:@item}
 
 - notifications = @notifications.where.not(visitor_id: current_user.id)
 - if notifications.exists?
