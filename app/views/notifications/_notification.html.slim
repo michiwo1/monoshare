@@ -13,6 +13,9 @@
       - when 'apply' then
         = link_to "あなたの投稿(#{notification.item.tittle})", notification.item, style: "font-weight: bold;"
         = "に申請しました"
+      - when 'cancel' then
+        = link_to "あなたの投稿(#{notification.item.tittle})", notification.item, style: "font-weight: bold;"
+        = "の申請をキャンセルしました"
 
   .small.text-muted.text-right
     = time_ago_in_words(notification.created_at).upcase

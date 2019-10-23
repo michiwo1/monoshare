@@ -66,6 +66,8 @@ class ItemsController < ApplicationController
     item.save!
     item_notification = Notification.find_by(item_id: params[:item_id])
     item_notification.destroy
+    item_notification_cancel = Item.find(params[:item_id])
+    item_notification_cancel.notification_cancel(current_user)
     redirect_to items_path
   end
 
