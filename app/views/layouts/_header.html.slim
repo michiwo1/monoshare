@@ -11,7 +11,7 @@ headr
   - if user_signed_in?
 
 
-
+ 
     = link_to '借りているもの一覧', borrowing_user_path(current_user.id),class:'button btn btn-outline-success mr-3 '
     = link_to '貸し出し中一覧', lending_user_path(current_user.id),class:'button btn btn-outline-success mr-3 '
     = link_to '承認待ち一覧', waiting_user_path(current_user.id),class:'button btn btn-outline-info mr-3 '

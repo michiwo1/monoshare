@@ -1,15 +1,19 @@
 =render partial: 'layouts/header',locals:{item:@item}
 
+.bg-white.mx-auto.p-5 style=("width:800px;")
+  img src="#{@user.image}" width="100" height="100" class="rounded-circle mb-2"
 
+  h3.d-inline.p-3=@user.username
+  h3.d-inline=@user.id
+  p.pb-3=@user.email
 
-img src="#{@user.image}" width="100" height="100" class="rounded-circle mb-2"
-h2= @user.username
-h2=@user.id
-p=@user.email
-p=@user.self_introduction
-p=@user.request
-- if @user.id==current_user.id
- = link_to 'プロフィール変更', edit_user_registration_path(current_user.id),class:'button btn btn-outline-danger mr-3 '
+  h3.border-bottom 自己紹介
+  p.pb-5 =@user.self_introduction
+
+  h3.border-bottom リクエスト
+  p.pb-5 =@user.request
+  - if @user.id==current_user.id
+   = link_to 'プロフィール変更', edit_user_registration_path(current_user.id),class:'button btn btn-outline-danger mr-3'
 
 h1.my-5 自分のシェア品一覧
 

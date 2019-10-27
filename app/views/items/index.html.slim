@@ -1,8 +1,6 @@
 =render partial: 'layouts/header',locals:{item:@item}
 =render partial: 'items/carousel'
-h2.mt-3.mb-3.d-flex.justify-content-center シェア一覧
-
-
+h2.py-4.d-flex.justify-content-center.bg-white シェア一覧
 
 - @items.each_slice(4) do |items|
  card.card-deck
