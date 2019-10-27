@@ -1,5 +1,7 @@
+- Rails::logger::debug(notification) 
 - visitor = notification.visitor
 - visited = notification.visited
+
 .col-md-6.mx-auto
   .form-inline
     span
@@ -8,7 +10,6 @@
         strong
           = visitor.username
       = 'さんが'
-
       - case notification.action
       - when 'apply' then
         = link_to "あなたの投稿(#{notification.item.tittle})", notification.item, style: "font-weight: bold;"
@@ -16,6 +17,9 @@
       - when 'cancel' then
         = link_to "あなたの投稿(#{notification.item.tittle})", notification.item, style: "font-weight: bold;"
         = "の申請をキャンセルしました"
+      - when 'approve' then
+        = link_to "あなたの投稿(#{notification.item.tittle})", notification.item, style: "font-weight: bold;"
+        = "が承認されました"
 
   .small.text-muted.text-right
     = time_ago_in_words(notification.created_at).upcase

@@ -75,16 +75,22 @@ class ItemsController < ApplicationController
     item = Item.find(params[:item_id])
     item.state = 2
     item.save!
+    item_notification = Item.find(params[:item_id])
+    item_notification.notification_approve(current_user)
     redirect_to items_path
   end
 
   def reject
     rental = Rental.find_by(item_id: params[:item_id])
     rental.destroy
-    redirect_to items_path
     item = Item.find(params[:item_id])
     item.state = nil
     item.save!
+    item_notification = Notification.find_by(item_id: params[:item_id])
+    item_notification.destroy
+    item_notification_cancel = Item.find(params[:item_id])
+    item_notification_cancel.notification_reject(current_user)
+    redirect_to items_path
   end
 
   def complete

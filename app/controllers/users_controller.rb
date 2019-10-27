@@ -36,6 +36,8 @@ before_action :authenticate_user!, except: [:index]
 
   def notifications
     @notifications = current_user.passive_notifications
+    Rails::logger::debug('---------------')
+    Rails::logger::debug(@notifications.pluck(:id))
     @notifications.where(checked: false).each do |notification|
       notification.update_attributes(checked: true)
     end
