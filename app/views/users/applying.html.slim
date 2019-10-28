@@ -5,22 +5,28 @@ h1.mb-5 申請一覧
  card.card-deck
     - items.each do |item|
       .card.mb-4 style=("max-width: 21rem;")
-       =link_to item
-        img.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="180" preserveaspectratio=("xMidYMid slice") role="img" width="100%" src="#{item.image}"
-          h4
-           span.badge.badge-pill.badge-danger 申請中
-          title Placeholder
-          rect fill="#868e96" height="100%" width="100%"
-          text dy=".3em" fill="#dee2e6" x="50%" y="50%"
+       - if item.image?
+         =link_to item
+          img.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="220px" preserveaspectratio=("xMidYMid slice") role="img" width="100%" src="#{item.image}"
+            h4
+             span.badge.badge-pill.badge-danger 申請中
+            title Placeholder
+            rect fill="#868e96" height="100%" width="100%"
+            text dy=".3em" fill="#dee2e6" x="50%" y="50%"
+       - else
+          =link_to item
+           = image_tag "/assets/c.png",class:'bd-placeholder-img card-img-top',style: 'width:100%; height:220px;'
+           h4
+            span.badge.badge-pill.badge-danger 申請中
        .card-body
           =link_to item.user
            img src="#{item.user.image}" width="50" height="50" class="rounded-circle mb-2 mr-2"
-          h5.d-inline =link_to item.tittle, item
-          
+          h5.d-inline =link_to item.tittle, item,class:'text-dark'
+
           hr
+          p = link_to "#{item.user.username}さんに申請中です。",item.user,class:'ml-4 d-flex justify-content-center text-dark '
           .d-flex.justify-content-center.mb-2
             img src="#{item.rentals.last.user.image}" width="25" height="25" class="rounded-circle mb-2 mx-2 "
             a = "⇨"
             =link_to item.user
              img src="#{item.user.image}" width="25" height="25" class="rounded-circle mb-2 ml-2 "
-          p = link_to "#{item.user.username}さんに申請中です。",item.user,class:'ml-4 d-flex justify-content-center'
