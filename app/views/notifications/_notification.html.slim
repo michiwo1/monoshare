@@ -1,4 +1,4 @@
-- Rails::logger::debug(notification) 
+- Rails::logger::debug(notification)
 - visitor = notification.visitor
 - visited = notification.visited
 
@@ -20,6 +20,12 @@
       - when 'approve' then
         = link_to "あなたの投稿(#{notification.item.tittle})", notification.item, style: "font-weight: bold;"
         = "が承認されました"
+      - when 'reject' then
+        = link_to "あなたの投稿(#{notification.item.tittle})", notification.item, style: "font-weight: bold;"
+        = "承認が拒否されました"
+      - when 'complete' then
+        = link_to "あなたの投稿(#{notification.item.tittle})", notification.item, style: "font-weight: bold;"
+        = "の返却を確認しました"
 
   .small.text-muted.text-right
     = time_ago_in_words(notification.created_at).upcase

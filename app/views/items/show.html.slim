@@ -7,7 +7,7 @@
   - if @item.image?
    = image_tag @item.image.thumb.url
   - else
-   = image_tag("/assets/baseline_account_circle_black_18dp.png")
+   
 
   - if current_user != @item.user
     - if @item.rentaled_by?(current_user)

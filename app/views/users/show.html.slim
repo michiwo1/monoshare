@@ -1,9 +1,13 @@
 =render partial: 'layouts/header',locals:{item:@item}
 
 .bg-white.mx-auto.p-5 style=("width:800px;")
-  img src="#{@user.image}" width="100" height="100" class="rounded-circle mb-2"
+  - if @user.image?
+    img src="#{@user.image}" width="100" height="100" class="rounded-circle mb-2"
+  - else
+    = image_tag "/assets/a.png",class:'border rounded-circle mb-2',style: 'width:100px; height:100px;'
 
-  h3.d-inline.p-3=@user.username
+
+  h3.d-inline.p-3.font-weight-bold =@user.username
   h3.d-inline=@user.id
   p.pb-3=@user.email
 

@@ -11,7 +11,7 @@ headr
   - if user_signed_in?
 
 
- 
+
     = link_to '借りているもの一覧', borrowing_user_path(current_user.id),class:'button btn btn-outline-success mr-3 '
     = link_to '貸し出し中一覧', lending_user_path(current_user.id),class:'button btn btn-outline-success mr-3 '
     = link_to '承認待ち一覧', waiting_user_path(current_user.id),class:'button btn btn-outline-info mr-3 '
@@ -27,8 +27,13 @@ headr
       - else
         i.far.fa-bell.fa-lg.mt-2.mr-2 style="font-size: 1.5em;"
 
-    = link_to user_path(current_user.id)
-     img src="#{current_user.image}" width="35" height="35" class="rounded-circle mr-1 "
+    - if current_user.image?
+      = link_to user_path(current_user.id)
+       img src="#{current_user.image}" width="35" height="35" class="rounded-circle mr-1 "
+    - else
+      = link_to user_path(current_user.id)
+       = image_tag "/assets/a.png",class:'border  rounded-circle mr-1',style: 'width:37px; height:37px;'
+
     = link_to "#{current_user.username}さんプロフィール", user_path(current_user.id),class:'button btn btn-outline-danger mr-3 '
     = link_to 'ログアウト', destroy_user_session_path, method: :delete,class:'button btn btn-outline-secondary '
   - else
