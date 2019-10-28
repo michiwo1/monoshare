@@ -7,9 +7,10 @@
   - if @item.image?
    = image_tag @item.image.thumb.url
   - else
-   
+
 
   - if current_user != @item.user
+   -if @item.state != 2
     - if @item.rentaled_by?(current_user)
      p = link_to "申請をキャンセルする",cancel_item_path(item_id: @item.id), method: :post,class:'button btn btn-outline-primary mx-3 my-3 '
     - else
@@ -28,6 +29,6 @@
 
 
 
-  - if user_signed_in? && @item.user_id==current_user.id
-   = link_to '編集',edit_item_path,class: 'btn btn-primary mr-3'
-   = link_to '削除',@item,method: :delete, remote:true , data:{ confirm:"タスク「#{@item.tittle}」を削除します。よろしいですか？"}, class: 'btn btn-danger delete'
+  - if user_signed_in? && @item.user_id==current_user.id && @item.state == nil 
+     = link_to '編集',edit_item_path,class: 'btn btn-primary mr-3'
+     = link_to '削除',@item,method: :delete, remote:true , data:{ confirm:"タスク「#{@item.tittle}」を削除します。よろしいですか？"}, class: 'btn btn-danger delete'

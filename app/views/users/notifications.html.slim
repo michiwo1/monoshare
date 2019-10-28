@@ -1,8 +1,11 @@
 =render partial: 'layouts/header2',locals:{item:@item}
 
 - notifications = @notifications.where.not(visitor_id: current_user.id)
-- if notifications.exists?
-  = render notifications
-- else
-  p
-    | 通知はありません
+
+.bg-white.mx-auto style=("width:800px;")
+  h4.py-5.text-center.border-bottom.font-weight-bold 通知一覧
+  - if notifications.exists?
+    = render notifications
+  - else
+    p
+      | 通知はありません

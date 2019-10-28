@@ -19,15 +19,26 @@ h1.mb-5 貸し出し一覧
          h4
           span.badge.badge-pill.badge-success 貸し出し中
        .card-body
+         - if item.user.image?
           =link_to item.user
            img src="#{item.user.image}" width="50" height="50" class="rounded-circle mb-2 mr-2"
-          h5.d-inline =link_to item.tittle, item,class:'text-dark'
+         - else
+           =link_to user_path(item.user.id)
+            = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2',style: 'width:40px; height:40px;'
+         h5.d-inline =link_to item.tittle, item,class:'text-dark'
 
-          hr
-          p= link_to "#{item.rentals.last.user.username}さんに貸し出しています。",item.rentals.last.user,class:'ml-4 text-dark'
-          .d-flex.justify-content-center.mb-2
-            img src="#{item.user.image}" width="25" height="25" class="rounded-circle mb-2 mr-2 "
-            a = "⇨"
-            =link_to item.rentals.last.user
-             img src="#{item.rentals.last.user.image}" width="25" height="25" class="rounded-circle mb-2 mx-2 "
-          a = link_to "返却済み",complete_item_path(item_id: item.id), method: :post,class:'button btn btn-outline-success mx-5 d-block '
+         hr
+         p= link_to "#{item.rentals.last.user.username}さんに貸し出しています。",item.rentals.last.user,class:'ml-4 text-dark'
+         .d-flex.justify-content-center.mb-2
+          - if item.user.image?
+             img src="#{item.user.image}" width="25" height="25" class="rounded-circle mb-2 mr-2 "
+          - else
+            = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2',style: 'width:25px; height:25px;'
+          a = "⇨"
+          - if item.user.image?
+           =link_to item.rentals.last.user
+            img src="#{item.rentals.last.user.image}" width="25" height="25" class="rounded-circle mb-2 mx-2 "
+          - else
+            = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2',style: 'width:25px; height:25px;'
+
+         a = link_to "返却済み",complete_item_path(item_id: item.id), method: :post,class:'button btn btn-outline-success mx-5 d-block '

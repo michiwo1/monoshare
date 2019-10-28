@@ -2,13 +2,21 @@
 - visitor = notification.visitor
 - visited = notification.visited
 
-.col-md-6.mx-auto
+
+.col-md-9.mx-auto style=("width:100%")
   .form-inline
     span
-      = link_to user_path(visitor) do
-        img src="#{visitor.image}" width="24" height="24" class="rounded-circle mr-1 "
-        strong
-          = visitor.username
+      - if visitor.image?
+        = link_to user_path(visitor) do
+          img src="#{visitor.image}" width="24" height="24" class="rounded-circle mr-1 "
+          strong
+            = visitor.username
+      - else
+        = link_to user_path(visitor) do
+          = image_tag "/assets/a.png",class:'border  rounded-circle mr-1',style: 'width:24px; height:24px;'
+          strong
+            = visitor.username
+
       = 'さんが'
       - case notification.action
       - when 'apply' then
