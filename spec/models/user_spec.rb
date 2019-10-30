@@ -8,6 +8,12 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
+  # usernameが入力されていないので保存できない（結果はfalse）
+  it "is invalid with a password" do
+    user = User.new(email:"dddd@dddd",password:123456)
+    expect(user.save).to be_falsey
+  end
+
   # passwordが入力されていないので保存できない（結果はfalse）
   it "is invalid with a password" do
     user = User.new(username:"にんじん",email:"dddd@dddd")
