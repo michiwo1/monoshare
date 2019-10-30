@@ -1,34 +1,31 @@
 =render partial: 'layouts/header',locals:{item:@item}
-.text-center.bg-white.mx-auto style=("width:600px;")
-  =link_to user_path(@item.user.id)
-   img src="#{@item.user.image}" width="50" height="50" class="rounded-circle mb-2 mr-2"
-  p= link_to(@item.user.username, "/users/#{@item.user_id}")
-  p = @item.tittle
+.text-center.bg-white.mx-auto.my-5.pt-3 style=("width:600px;")
+  h2.font-weight-bold = @item.tittle
+
   - if @item.image?
-   = image_tag @item.image.thumb.url
+   = image_tag @item.image.url,class:'my-3',style: 'width:400px; height:300px;'
   - else
+   = image_tag "/assets/c.png",class:'bd-placeholder-img card-img-top',style: 'width:400px; height:300px;'
 
 
+
+
+  p.p-3.mx-5.text-left= @item.content
+  hr
+  - if @item.user.image?
+    a=link_to user_path(@item.user.id)
+     img src="#{@item.user.image}" width="40" height="40" class="rounded-circle mb-2 mr-2 "
+  - else
+    a=link_to user_path(@item.user.id)
+      = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2',style: 'width:40px; height:40px;'
+  h5.d-inline= link_to @item.user.username, "/users/#{@item.user_id}" ,class:'text-dark'
+  - if user_signed_in? && @item.user_id==current_user.id && @item.state == nil
+   p.m-2
+     = link_to '編集',edit_item_path,class: 'btn btn-primary mr-3'
+     = link_to '削除',@item,method: :delete, remote:true , data:{ confirm:"タスク「#{@item.tittle}」を削除します。よろしいですか？"}, class: 'btn btn-danger delete'
   - if current_user != @item.user
    -if @item.state != 2
     - if @item.rentaled_by?(current_user)
      p = link_to "申請をキャンセルする",cancel_item_path(item_id: @item.id), method: :post,class:'button btn btn-outline-primary mx-3 my-3 '
     - else
      p = link_to "申請する",apply_item_path(item_id: @item.id), method: :post,class:'button btn btn-outline-danger mx-3 my-3 '
-
-
-
-
-
-  p.d-inline = Item.human_attribute_name(:state)
-  p.d-inline = @item.state
-  p.d-inline = Item.human_attribute_name(:id)
-  p.d-inline = @item.id
-  p = Item.human_attribute_name(:content)
-  p = @item.content
-
-
-
-  - if user_signed_in? && @item.user_id==current_user.id && @item.state == nil 
-     = link_to '編集',edit_item_path,class: 'btn btn-primary mr-3'
-     = link_to '削除',@item,method: :delete, remote:true , data:{ confirm:"タスク「#{@item.tittle}」を削除します。よろしいですか？"}, class: 'btn btn-danger delete'

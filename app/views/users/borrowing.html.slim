@@ -1,5 +1,5 @@
 =render partial: 'layouts/header',locals:{item:@item}
-h1.mb-5 借りているもの一覧
+h1.mb-5.p-3  借りているもの一覧
 
 - @borrowing_items.each_slice(4) do |items|
  card.card-deck
@@ -10,7 +10,7 @@ h1.mb-5 借りているもの一覧
           img.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="220px" preserveaspectratio=("xMidYMid slice") role="img" width="100%" src="#{item.image}"
             h4
              span.badge.badge-pill.badge-success 借りている
-          
+
        - else
          =link_to item
           = image_tag "/assets/c.png",class:'bd-placeholder-img card-img-top',style: 'width:100%; height:220px;'
