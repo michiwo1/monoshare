@@ -10,7 +10,7 @@ header.text-center.my-5
       = f.label :ユーザー名
       .badge.badge-danger.mx-1 必須
       br/
-      = f.text_field :username, autofocus: true,class: 'form-control mx-auto',style: 'width:200px;'
+      = f.text_field :username, autofocus: true,autocomplete: "username",class: 'form-control mx-auto',style: 'width:200px;'
     .field.my-4
       = f.label :メールアドレス
       .badge.badge-danger.mx-1 必須
