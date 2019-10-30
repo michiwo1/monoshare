@@ -6,33 +6,53 @@ headr
    input.form-control.mr-sm-2 aria-label="Search" placeholder="何かお探しですか？" type="search" /
    button.btn.btn-outline-success.my-2.my-sm-0 type="submit"  検索
 
- .d-flex.justify-content-end.mr-5
+ .d-flex.justify-content-end.mr-5 style="color:#6c757d;"
 
   - if user_signed_in?
-    = link_to '借りているもの一覧', borrowing_user_path(current_user.id),class:'button btn btn-outline-success mr-3 '
-    = link_to '貸し出し中一覧', lending_user_path(current_user.id),class:'button btn btn-outline-success mr-3 '
-    = link_to '承認待ち一覧', waiting_user_path(current_user.id),class:'button btn btn-outline-info mr-3 '
-    = link_to '申請中一覧',  applying_user_path(current_user.id),class:'button btn btn-outline-info mr-3 '
-    = link_to 'ユーザー一覧', users_path,class:'button btn btn-outline-primary mr-3 '
-    = link_to 'シェアする', new_item_path,class:'button btn btn-outline-primary mr-3 '
+    = link_to new_item_path,style:"color:#6c757d;"
+     i.far.fa-handshake.fa-lg.pt-2.mr-1
+    = link_to 'シェアする', new_item_path,class:"p-1 mr-4 text-dark",style:"color:#6c757d;"
+
+
+
 
     = link_to(notifications_user_path(current_user.id)) do
       - if unchecked_notifications.any?
         span.fa-stack
-          i.far.fa-bell.fa-lg.fa-stack-2x.mt-2.mr-2 style="font-size: 1.5em;"
+          i.far.fa-bell.fa-lg.fa-stack-2x.pt-2.mr-1 style="font-size: 1.3em; color:#6c757d;"
           i.fas.fa-circle.n-circle.fa-stack-1x
       - else
-        i.far.fa-bell.fa-lg.mt-2.mr-2 style="font-size: 1.5em;"
+        i.far.fa-bell.fa-lg.pt-2.mr-1 style="font-size: 1.3em; color:#6c757d;"
+
+
+    a = link_to "通知一覧",notifications_user_path(current_user.id),class:"p-1 mr-4 text-dark",style:"color:#6c757d;"
+
+    i.far.fa-file-alt.fa-lg.pt-2.mr-1 style="color:#6c757d;"
+    .nav-item.dropdown
+       a.nav-link.dropdown-toggle.p-1.mr-3.text-dark aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"  一覧リスト
+       .dropdown-menu.text-center
+         a.dropdown-item = link_to '申請中一覧',  applying_user_path(current_user.id),class:"text-dark"
+         a.dropdown-item = link_to '承認待ち一覧', waiting_user_path(current_user.id),class:"text-dark"
+         a.dropdown-item = link_to '貸し出し中一覧', lending_user_path(current_user.id),class:"text-dark"
+         a.dropdown-item = link_to '借りているもの一覧', borrowing_user_path(current_user.id),class:"text-dark"
 
     - if current_user.image?
       = link_to user_path(current_user.id)
-       img src="#{current_user.image}" width="35" height="35" class="rounded-circle mr-1 "
+       img src="#{current_user.image}" width="30" height="30" class="rounded-circle"
     - else
       = link_to user_path(current_user.id)
-       = image_tag "/assets/a.png",class:'border  rounded-circle mr-1',style: 'width:37px; height:37px;'
+       = image_tag "/assets/a.png",class:'border  rounded-circle',style: 'width:30px; height:30px;'
 
-    = link_to "#{current_user.username}さんプロフィール", user_path(current_user.id),class:'button btn btn-outline-danger mr-3 '
-    = link_to 'ログアウト', destroy_user_session_path, method: :delete,class:'button btn btn-outline-secondary '
+
+    .nav-item.dropdown
+        a.nav-link.dropdown-toggle.p-1.text-dark aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" style="color:#6c757d;" マイページ
+        .dropdown-menu.text-center
+          a.dropdown-item = link_to "プロフィール", user_path(current_user.id),class:"text-dark"
+          a.dropdown-item = link_to 'ユーザー一覧', users_path,class:"text-dark"
+          a.dropdown-item = link_to 'ログアウト', destroy_user_session_path, method: :delete,class:"text-dark"
+
+
+
   - else
     = link_to 'サインアップ', new_user_registration_path,class:'button btn btn-outline-danger mr-3 '
     = link_to 'ログイン', new_user_session_path,class:'button btn btn-outline-primary '

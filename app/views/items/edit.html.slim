@@ -4,11 +4,14 @@
   h4.mx-auto.py-5.border-bottom.font-weight-bold シェア情報を入力
 
   - if @item.image?
-   = image_tag @item.image.url
+   = image_tag @item.image.url,style: 'width:400px; height:300px;'
+  - else
+    = image_tag "/assets/c.png",class:'bd-placeholder-img card-img-top',style: 'width:400px; height:300px;'
+
   = form_with model:@item,local:true do |f|
 
 
-    = f.label "画像をアップロード",class:"pt-3"
+    = f.label "画像を変更",class:"pt-3"
     br/
     = f.file_field :image,class:"border rounded p-5 "
     .form-group.mt-5

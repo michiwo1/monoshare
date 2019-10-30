@@ -4,7 +4,7 @@
   h4.mx-auto.py-5.border-bottom.font-weight-bold シェア情報を入力
 
   - if @item.image?
-   = image_tag @item.thumb50s.url
+   = image_tag @item.thumb50.url
   = form_with model:@item,local:true do |f|
     = f.label "画像をアップロード" ,class:"pt-3"
     br/
