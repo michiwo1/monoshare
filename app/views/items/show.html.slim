@@ -11,6 +11,7 @@
 
 
   p.p-3.mx-5.text-left= @item.content
+  
   hr
   - if @item.user.image?
     a=link_to user_path(@item.user.id)
