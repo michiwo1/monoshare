@@ -11,12 +11,12 @@ header.text-center.my-5
     /! サインアップ時に名前を入力できるようにフォームを追加
     .field.mt-5
       = f.label :ユーザー名
-      .badge.badge-danger.mx-1 必須
+      .badge.badge-danger.m-2 必須
       br/
       = f.text_field :username, autofocus: true,autocomplete: "username",class: 'form-control mx-auto',style: 'width:200px;'
     .field.my-4
       = f.label :メールアドレス
-      .badge.badge-danger.mx-1 必須
+      .badge.badge-danger.m-2 必須
       br/
       = f.email_field :email, autofocus: true, autocomplete: "email",class: 'form-control mx-auto',style: 'width:200px;'
     .field.my-4
@@ -24,12 +24,12 @@ header.text-center.my-5
       - if @minimum_password_length
         em
           | (#{@minimum_password_length} 文字以上)
-      .badge.badge-danger.mx-1 必須
+      .badge.badge-danger.m-2 必須
       br/
       = f.password_field :password, autocomplete: "new-password",class: 'form-control mx-auto',style: 'width:200px;'
     .field.my-4
       = f.label :パスワード確認
-      .badge.badge-danger.mx-1 必須
+      .badge.badge-danger.m-2 必須
       br/
       = f.password_field :password_confirmation, autocomplete: "new-password",class: 'form-control mx-auto',style: 'width:200px;'
     .actions
