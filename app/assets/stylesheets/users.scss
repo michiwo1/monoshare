@@ -3,8 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .n-circle {
+  background-color: rgb(234, 53, 45);
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  height: 20px;
+  left: 6px;
+  line-height: 20px;
   position: absolute;
-  padding-left: 1rem;
-  padding-top: 0rem;
-  color: #efa04c;
+  text-align: center;
+  top: -2px;
+  width: 20px;
+  border-radius: 50%;
 }

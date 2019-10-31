@@ -1,9 +1,10 @@
 =render partial: 'layouts/header',locals:{item:@item}
 =render partial: 'partial/carousel'
 
-h2.py-4.d-flex.justify-content-center.bg-white シェア一覧
+h2.py-4.d-flex.justify-content-center.bg-white style="color:#6c757d;" シェア一覧
 - if notice
- =notice
+ .alert.alert-secondary.text-center.mx-auto.font-weight-bold role="notice"  style="width:600px; height:50px;"
+  =notice
 -if alert
  =alert
 - @items.each_slice(4) do |items|
