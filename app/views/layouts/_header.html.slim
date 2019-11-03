@@ -16,18 +16,6 @@ headr
 
 
 
-    = link_to(notifications_user_path(current_user.id)) do
-      - if unchecked_notifications.any?
-        i.far.fa-bell.fa-lg.pt-2.mr-1 style="font-size: 1.3em; color:#EA352D;"
-          <!-- i.fas.fa-circle.n-circle.fa-stack-1x.pb-1 style="color:#EA352D; font-size:0.8em" -->
-      - else
-        i.far.fa-bell.fa-lg.pt-2.mr-1 style="font-size: 1.3em; color:#6c757d;"
-
-    - if unchecked_notifications.any?
-      a = link_to "通知一覧",notifications_user_path(current_user.id),class:"p-1 mr-4 ",style:"color:#EA352D;"
-    - else
-      a = link_to "通知一覧",notifications_user_path(current_user.id),class:"p-1 mr-4 text-dark",style:"color:#6c757d;"
-
     i.far.fa-file-alt.fa-lg.pt-2.mr-1 style="color:#6c757d;"
     .nav-item.dropdown
        a.nav-link.dropdown-toggle.p-1.mr-3.text-dark aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"  一覧リスト
@@ -36,6 +24,19 @@ headr
          a.dropdown-item = link_to '承認待ち一覧', waiting_user_path(current_user.id),class:"text-dark"
          a.dropdown-item = link_to '貸し出し中一覧', lending_user_path(current_user.id),class:"text-dark"
          a.dropdown-item = link_to '借りているもの一覧', borrowing_user_path(current_user.id),class:"text-dark"
+
+
+    = link_to(notifications_user_path(current_user.id)) do
+       - if unchecked_notifications.any?
+         i.far.fa-bell.fa-lg.pt-2.mr-1 style="font-size: 1.3em; color:#EA352D;"
+           <!-- i.fas.fa-circle.n-circle.fa-stack-1x.pb-1 style="color:#EA352D; font-size:0.8em" -->
+       - else
+         i.far.fa-bell.fa-lg.pt-2.mr-1 style="font-size: 1.3em; color:#6c757d;"
+
+    - if unchecked_notifications.any?
+       a = link_to "通知一覧",notifications_user_path(current_user.id),class:"p-1 mr-4 ",style:"color:#EA352D;"
+    - else
+       a = link_to "通知一覧",notifications_user_path(current_user.id),class:"p-1 mr-4 text-dark",style:"color:#6c757d;"
 
     - if current_user.image?
       = link_to user_path(current_user.id)

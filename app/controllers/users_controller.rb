@@ -15,7 +15,7 @@ before_action :authenticate_user!, except: [:index]
 
   def applying
     @user = current_user
-    @rentals_items = @user.rentals_items.where(state:'1')# 追加s
+    @rentals_items = @user.rentals_items.where(state:'1')
   end
 
   def waiting
@@ -35,11 +35,10 @@ before_action :authenticate_user!, except: [:index]
 
 
   def notifications
-    @notifications = current_user.passive_notifications
-    Rails::logger::debug('---------------')
-    Rails::logger::debug(@notifications.pluck(:id))
+    @notifications = current_user.passive_notifications.page(params[:page]).per(10).order('updated_at DESC')
     @notifications.where(checked: false).each do |notification|
       notification.update_attributes(checked: true)
+
     end
   end
 
