@@ -1,6 +1,6 @@
 =render partial: 'layouts/header',locals:{item:@item}
 .text-center.bg-white.mx-auto.my-5.pt-3 style=("width:600px;")
-  h2.font-weight-bold = @item.tittle
+  h2.font-weight-bold.mb-3 = @item.tittle
 
   - if @item.image?
    = image_tag @item.image.url,class:'my-3 rounded shadow',style: 'width:400px; height:300px;'
@@ -10,7 +10,7 @@
 
 
 
-  p.p-3.mx-5.text-left= @item.content
+  p.p-4.mx-5.text-left= @item.content
   p.p-3.mx-5.text-left= @item.state
 
   - if @item.user.image?

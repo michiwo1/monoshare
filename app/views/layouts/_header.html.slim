@@ -38,9 +38,9 @@ headr
          i.far.fa-bell.fa-lg.pt-2.mr-1 style="font-size: 1.3em; color:#6c757d;"
 
     - if unchecked_notifications.any?
-       a = link_to "通知一覧",notifications_user_path(current_user.id),class:"p-1 mr-4 ",style:"color:#EA352D;"
+       a = link_to "通知一覧",notifications_user_path(current_user.id),class:"p-1 mr-4 ",style:"color:#EA352D;",id:"通知一覧"
     - else
-       a = link_to "通知一覧",notifications_user_path(current_user.id),class:"p-1 mr-4 text-dark",style:"color:#6c757d;"
+       a = link_to "通知一覧",notifications_user_path(current_user.id),class:"p-1 mr-4 text-dark",style:"color:#6c757d;",id:"通知一覧"
 
     - if current_user.image?
       = link_to user_path(current_user.id)

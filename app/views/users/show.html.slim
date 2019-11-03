@@ -1,8 +1,8 @@
 =render partial: 'layouts/header',locals:{item:@item}
-
 .bg-white.mx-auto.p-5.my-5 style=("width:800px;")
+  h4.pb-5.text-center.border-bottom.font-weight-bold プロフィール
   - if @user.image?
-    img src="#{@user.image}" width="100" height="100" class="rounded-circle mb-2"
+    img src="#{@user.image}" width="100" height="100" class="rounded-circle mb-2 mt-2"
   - else
     = image_tag "/assets/a.png",class:'border rounded-circle mb-2',style: 'width:100px; height:100px;'
 

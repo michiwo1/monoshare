@@ -1,5 +1,5 @@
 =render partial: 'layouts/header',locals:{item:@item}
-h1.mb-5.p-3  申請待ち一覧
+h1.mb-5.p-3  承認待ち一覧
 
 - @waiting_items.each_slice(4) do |items|
   card.card-deck

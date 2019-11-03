@@ -1,5 +1,5 @@
 =render partial: 'layouts/header',locals:{item:@item}
-h1.mb-5.p-3  貸し出し一覧
+h1.mb-5.p-3  貸し出し中一覧
 
 - @lending_items.each_slice(4) do |items|
   card.card-deck
