@@ -1,8 +1,11 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
 
+
+
   def index
     @items = Item.where(state:nil)
+    @items = Item.page(params[:page]).per(16).order('updated_at DESC')
   end
 
   def show

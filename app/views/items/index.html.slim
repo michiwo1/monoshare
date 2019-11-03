@@ -30,5 +30,5 @@ h2.py-4.d-flex.justify-content-center.bg-white style="color:#6c757d;" シェア�
 
              a.inline-block=link_to item.tittle, item,class:'text-dark text-center'
 
-
+= paginate @items 
 =render partial: 'layouts/footer',locals:{item:@item}
