@@ -1,13 +1,3 @@
-=render partial: 'layouts/header',locals:{item:@item}
-=render partial: 'partial/carousel'
-
-- if notice
- .alert.alert-secondary.text-center.mx-auto.font-weight-bold.mt-3 role="notice"  style="width:600px; height:50px;"
-  =notice
--if alert
- =alert
-h2.pb-4.pt-3.d-flex.justify-content-center.bg-white style="color:#6c757d;" シェア一覧
-
 - @searchs.each_slice(4) do |items|
  card.card-deck
    - items.each do |item|
@@ -30,7 +20,3 @@ h2.pb-4.pt-3.d-flex.justify-content-center.bg-white style="color:#6c757d;" シ�
                 = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2',style: 'width:35px; height:35px;'
 
              a.inline-block=link_to item.tittle, item,class:'text-dark text-center'
-
-
-= paginate @items
-=render partial: 'layouts/footer',locals:{item:@item}

@@ -3,16 +3,16 @@
   h2.font-weight-bold = @item.tittle
 
   - if @item.image?
-   = image_tag @item.image.url,class:'my-3',style: 'width:400px; height:300px;'
+   = image_tag @item.image.url,class:'my-3 rounded shadow',style: 'width:400px; height:300px;'
   - else
-   = image_tag "/assets/c.png",class:'bd-placeholder-img card-img-top',style: 'width:400px; height:300px;'
+   = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top rounded shadow',style: 'width:400px; height:300px;'
 
 
 
 
   p.p-3.mx-5.text-left= @item.content
+  p.p-3.mx-5.text-left= @item.state
 
-  hr
   - if @item.user.image?
     a=link_to user_path(@item.user.id)
      img src="#{@item.user.image}" width="40" height="40" class="rounded-circle mb-2 mr-2 "

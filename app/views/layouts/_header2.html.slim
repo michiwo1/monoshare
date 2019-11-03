@@ -1,11 +1,13 @@
 headr
-.shadow.p-3.mb-0.bg-white.rounded
+.shadow.pt-2.pb-3.px-3.mb-0.bg-white.rounded
  nav.navbar.navbar-light.bg-white.d-flex.justify-content-center
-  a.navbar-brand href="/" MONOシェア
-  form.form-inline
-   input.form-control.mr-sm-2 aria-label="Search" placeholder="何かお探しですか？" type="search" /
-   button.btn.btn-outline-success.my-2.my-sm-0 type="submit"  検索
-
+  = link_to "/"
+   = image_tag "/assets/logo.png",class:'rounded-circle mb-2',style: 'width:50px; height:50px;'
+  a.navbar-brand.font-weight-bold href="/" MONOシェア
+  = search_form_for @search, url: items_path do |f|
+    .form-inline
+     = f.text_field :tittle_cont, class: "form-control mr-sm-2 ", placeholder: '何かお探しですか？',style: 'width:400px; height:45px;'
+     = f.submit '検索',class:'button btn btn-outline-success'
  .d-flex.justify-content-end.mr-5 style="color:#6c757d;"
 
   - if user_signed_in?
