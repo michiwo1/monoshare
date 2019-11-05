@@ -42,4 +42,10 @@ before_action :authenticate_user!, except: [:index]
     end
   end
 
+  def favorite
+    @user = User.find(params[:id])
+    @items = @user.items
+    @favorite_items = @user.favorite_items
+  end
+
 end

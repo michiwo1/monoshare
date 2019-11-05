@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root to:'items#index'
   devise_for :users
 
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
     post :approve, on: :member
     post :reject, on: :member
     post :complete, on: :member
+    resource :favorites, only: [:create,:destroy]
   end
 
   resources :users do
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
     get :lending, on: :member
     get :borrowing, on: :member
     get :notifications, on: :member
+    get :favorite, on: :member
   end
 
 

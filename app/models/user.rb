@@ -8,9 +8,11 @@ class User < ApplicationRecord
   has_many :items,dependent: :destroy
   has_many :rentals
   has_many :rentals_items, through: :rentals, source: :item
-
+  has_many :favorites
+  has_many :favorite_items, through: :favorites, source: :item
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  has_many :favorite_items, through: :favorites, source: :item
 
   def items
     return Item.where(user_id: self.id)

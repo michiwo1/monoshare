@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   validates :user_id, presence: true
   has_many :rentals
   has_many :notifications, dependent: :destroy
-
+  has_many :favorites
 
   def rentaled_by?(user)
         rentals.where(user_id: user.id).exists?
@@ -101,6 +101,10 @@ class Item < ApplicationRecord
       end
       notification.save if notification.valid?
     end
+  end
+
+  def favorited_by?(user)
+        favorites.where(user_id: user.id).exists?
   end
 
 end
