@@ -32,12 +32,12 @@ h2.pb-4.pt-3.d-flex.justify-content-center.bg-white style="color:#6c757d;" ã‚·ã‚
              a.inline-block=link_to item.tittle, item,class:'text-dark text-center'
              - if user_signed_in?
                - if item.favorited_by?(current_user)
-                 p
+                 a.d-block
                    = link_to item_favorites_path(item.id), method: :delete
                     i.fas.fa-heart style="color:#EA352D;"
                    a.pl-1 = item.favorites.count
                - else
-                 p
+                 a.d-block
                    = link_to item_favorites_path(item.id), method: :post
                     i.far.fa-heart style="color:#6c757d;"
                    a.pl-1= item.favorites.count

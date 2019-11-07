@@ -23,12 +23,12 @@ h1.mb-5.p-3 お気に入り一覧
         a=link_to item.tittle, item,class:'text-dark'
         - if item.favorited_by?(current_user)
             /! ログインしているユーザーがファボしたかどうかで分岐
-            p
+            a.d-block
               = link_to item_favorites_path(item.id), method: :delete
                i.fas.fa-heart style="color:#EA352D;"
-              a=item.favorites.count 
+              a.pl-1=item.favorites.count
         - else
-            p
+            a.d-block
               = link_to item_favorites_path(item.id), method: :post
                i.far.fa-heart style="color:#6c757d;"
-              a=item.favorites.count
+              a.pl-1=item.favorites.count

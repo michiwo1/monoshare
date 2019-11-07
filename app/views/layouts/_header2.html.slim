@@ -24,6 +24,7 @@ headr
     .nav-item.dropdown
        a.nav-link.dropdown-toggle.p-1.mr-3.text-dark aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"  一覧リスト
        .dropdown-menu.text-center
+         a.dropdown-item = link_to 'お気に入り一覧', favorite_user_path(current_user.id),class:"text-dark"
          a.dropdown-item = link_to '申請中一覧',  applying_user_path(current_user.id),class:"text-dark"
          a.dropdown-item = link_to '承認待ち一覧', waiting_user_path(current_user.id),class:"text-dark"
          a.dropdown-item = link_to '貸し出し中一覧', lending_user_path(current_user.id),class:"text-dark"
