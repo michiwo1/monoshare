@@ -20,24 +20,34 @@
       = 'さんが'
       - case notification.action
       - when 'apply' then
-        = link_to "あなたの投稿(#{notification.item.tittle})", notification.item, style: "font-weight: bold;"
+        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, style: "font-weight: bold;"
         = "に申請しました"
       - when 'cancel' then
-        = link_to "あなたの投稿(#{notification.item.tittle})", notification.item, style: "font-weight: bold;"
+        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, style: "font-weight: bold;"
         = "の申請をキャンセルしました"
       - when 'approve' then
-        = link_to "あなたの投稿(#{notification.item.tittle})", notification.item, style: "font-weight: bold;"
+        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, style: "font-weight: bold;"
         = "が承認されました"
       - when 'reject' then
-        = link_to "あなたの投稿(#{notification.item.tittle})", notification.item, style: "font-weight: bold;"
+        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, style: "font-weight: bold;"
         = "承認が拒否されました"
       - when 'complete' then
-        = link_to "あなたの投稿(#{notification.item.tittle})", notification.item, style: "font-weight: bold;"
+        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, style: "font-weight: bold;"
         = "の返却を確認しました"
       - when 'favorite' then
-        = link_to "あなたの投稿(#{notification.item.tittle})", notification.item, style: "font-weight: bold;"
+        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, style: "font-weight: bold;"
         = "にいいねしました"
+      - when 'comment' then
+            - if notification.item.user_id == visited.id
+              = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, style: "font-weight: bold;"
+            - else
+              span
+                = link_to item_path(notification.item)
+                  strong
+                    = "自身の投稿にコメントしました"
 
+            p.text-muted.mb-0
+              = Comment.find_by(id: notification.comment_id)&.content
   .small.text-muted.text-right
     = time_ago_in_words(notification.created_at).upcase
   hr
