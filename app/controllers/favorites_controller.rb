@@ -5,6 +5,8 @@ class FavoritesController < ApplicationController
     # buildはnewと同じ意味で、アソシエーションしながらインスタンスをnewする時に形式的に使われる。
     favorite = current_user.favorites.build(item_id: params[:item_id])
     favorite.save
+    favorite_notification = Item.find(params[:item_id])
+    favorite_notification.notification_favorite(current_user)
     redirect_back(fallback_location: root_path)
   end
 

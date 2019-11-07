@@ -34,6 +34,9 @@
       - when 'complete' then
         = link_to "あなたの投稿(#{notification.item.tittle})", notification.item, style: "font-weight: bold;"
         = "の返却を確認しました"
+      - when 'favorite' then
+        = link_to "あなたの投稿(#{notification.item.tittle})", notification.item, style: "font-weight: bold;"
+        = "にいいねしました"
 
   .small.text-muted.text-right
     = time_ago_in_words(notification.created_at).upcase
