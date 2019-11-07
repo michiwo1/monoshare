@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     post :reject, on: :member
     post :complete, on: :member
     resource :favorites, only: [:create,:destroy]
+    resource :comments, only: [:create,:destroy]
   end
 
   resources :users do

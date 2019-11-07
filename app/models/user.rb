@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   has_many :favorite_items, through: :favorites, source: :item
+  has_many :comments
 
   def items
     return Item.where(user_id: self.id)

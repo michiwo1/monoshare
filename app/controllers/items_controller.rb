@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!
 
 
-
   def index
     @items = Item.where(state:nil)
     @items = Item.page(params[:page]).per(16).order('updated_at DESC')
@@ -10,7 +9,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(id: params[:id])
-    # 変数@userを定義してください
+    @comment = @item.comments.build
+
   end
 
   def new
