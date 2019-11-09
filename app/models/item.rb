@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   belongs_to :user
   validates :user_id, presence: true
   validates :tittle, presence: true
+  
   has_many :rentals
   has_many :notifications, dependent: :destroy
   has_many :favorites

@@ -17,6 +17,10 @@ headr
      i.far.fa-handshake.fa-lg.pt-2.mr-1
     = link_to 'シェアする', new_item_path,class:"p-1 mr-4 text-dark",style:"color:#6c757d;"
 
+
+
+
+
     i.far.fa-file-alt.fa-lg.pt-2.mr-1 style="color:#6c757d;"
     .nav-item.dropdown
        a.nav-link.dropdown-toggle.p-1.mr-3.text-dark aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"  一覧リスト
@@ -58,5 +62,5 @@ headr
 
 
   - else
-    = link_to 'サインアップ', new_user_registration_path,class:'button btn btn-outline-danger mr-3 '
+    = link_to '新規登録', new_user_registration_path,class:'button btn btn-outline-danger mr-3 '
     = link_to 'ログイン', new_user_session_path,class:'button btn btn-outline-primary '

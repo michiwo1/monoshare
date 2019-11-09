@@ -1,7 +1,7 @@
 header.text-center.my-5
  a.navbar-brand href="/" MONOシェア
  - if notice
-  p= notice
+  p.alert alert-danger = notice role=("notice")
  - if alert
   p.alert alert-danger = alert role=("alert")
 .form-group.text-center.bg-white.mx-auto style=("width:600px;")

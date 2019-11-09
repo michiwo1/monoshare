@@ -1,7 +1,7 @@
 =render partial: 'layouts/header',locals:{item:@item}
 .bg-white.mx-auto.mb-3.mt-5.pt-3 style=("width:650px;")
-  h2.font-weight-bold.mb-3.text-center = @item.tittle
 
+  h2.font-weight-bold.mb-3.text-center = @item.tittle
   .text-center
     - if @item.image?
      = image_tag @item.image.url,class:'my-3 rounded shadow mx-auto',style: 'width:400px; height:300px;'
@@ -9,9 +9,9 @@
      = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top rounded shadow mx-auto',style: 'width:400px; height:300px;'
   .text-center.mt-3
    .badge.badge-success.mr-1 シェア期間
-   a.mx-1= @item.share_start_date
+   a.mx-1= @item.share_start_date.strftime('%Y年%m月%d日')
    a 〜
-   a.mx-1= @item.share_end_date
+   a.mx-1= @item.share_end_date.strftime('%Y年%m月%d日')
   p.p-4.mx-5.text-left= @item.content
 
 

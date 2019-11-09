@@ -7,6 +7,7 @@
   -if alert
    .alert.alert-danger.text-center.mx-auto.font-weight-bold.mt-3 role="notice"  style="width:600px; height:50px;"
     =alert
+    
   - if @item.image?
    = image_tag @item.thumb50.url
   = form_with model:@item,local:true do |f|
@@ -23,7 +24,7 @@
       a.mr-1 シェア開始日
       .badge.badge-danger 必須
       .form-inline.d-flex.justify-content-center.m-2
-        = date_field_tag 'item[share_start_date]', nil,class: 'form-control' ,style: 'width:200px; '
+        = date_field_tag 'item[share_start_date]', nil,class: 'form-control' ,style: 'width:200px; ',type:"date"
       a.mr-1 シェア終了日
       .badge.badge-danger 必須
       .form-inline.d-flex.justify-content-center.m-2
