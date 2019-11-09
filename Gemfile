@@ -7,6 +7,14 @@ gem 'slim-rails'
 gem 'html2slim'
 gem 'bootstrap'
 gem 'rails-i18n'
+gem 'devise'
+gem 'omniauth-twitter'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'enumerize'
+gem 'kaminari', '~> 0.17.0'
+gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'ransack'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
 # Use postgresql as the database for Active Record
@@ -52,6 +60,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'rspec-rails', '~> 3.7.2'
+  gem 'factory_bot_rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

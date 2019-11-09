@@ -1,71 +1,53 @@
-#carouselExampleIndicators.carousel.slide data-ride="carousel"
-  ol.carousel-indicators
-    li.active data-slide-to="0" data-target="#carouselExampleIndicators"
-    li data-slide-to="1" data-target="#carouselExampleIndicators"
-    li data-slide-to="2" data-target="#carouselExampleIndicators"
-  .carousel-inner
-    .carousel-item.active
-      svg.bd-placeholder-img.bd-placeholder-img-lg.d-block.w-100 aria-label=("Placeholder: First slide") focusable="false" height="400" preserveaspectratio=("xMidYMid slice") role="img" width="800" xmlns="http://www.w3.org/2000/svg"
-        title Placeholder
-        rect fill="#777" height="100%" width="100%"
-        text dy=".3em" fill="#555" x="50%" y="50%"  First slide
-    .carousel-item
-      svg.bd-placeholder-img.bd-placeholder-img-lg.d-block.w-100 aria-label=("Placeholder: Second slide") focusable="false" height="400" preserveaspectratio=("xMidYMid slice") role="img" width="800" xmlns="http://www.w3.org/2000/svg"
-        title Placeholder
-        rect fill="#666" height="100%" width="100%"
-        text dy=".3em" fill="#444" x="50%" y="50%"  Second slide
-    .carousel-item
-      svg.bd-placeholder-img.bd-placeholder-img-lg.d-block.w-100 aria-label=("Placeholder: Third slide") focusable="false" height="400" preserveaspectratio=("xMidYMid slice") role="img" width="800" xmlns="http://www.w3.org/2000/svg"
-        title Placeholder
-        rect fill="#555" height="100%" width="100%"
-        text dy=".3em" fill="#333" x="50%" y="50%"  Third slide
-  a.carousel-control-prev data-slide="prev" href="#carouselExampleIndicators" role="button"
-    span.carousel-control-prev-icon aria-hidden="true"
-    span.sr-only Previous
-  a.carousel-control-next data-slide="next" href="#carouselExampleIndicators" role="button"
-    span.carousel-control-next-icon aria-hidden="true"
-    span.sr-only Next
+=render partial: 'layouts/header',locals:{item:@item}
+=render partial: 'partial/carousel'
 
-main
- h2.mt-3.mb-3.d-flex.justify-content-center シェア一覧
+- if notice
+ .alert.alert-secondary.text-center.mx-auto.font-weight-bold.mt-3 role="notice"  style="width:600px; height:50px;"
+  =notice
+-if alert
+ .alert.alert-secondary.text-center.mx-auto.font-weight-bold.mt-3 role="notice"  style="width:600px; height:50px;"
+  =alert
+h2.pb-4.pt-3.d-flex.justify-content-center.bg-white style="color:#6c757d;" シェア一覧
 
+- @searchs.each_slice(4) do |items|
  card.card-deck
-   .card style=("width: 18rem;")
-    svg.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="180" preserveaspectratio=("xMidYMid slice") role="img" width="100%" xmlns="http://www.w3.org/2000/svg"
-     title Placeholder
-     rect fill="#868e96" height="100%" width="100%"
-     text dy=".3em" fill="#dee2e6" x="50%" y="50%"
-    .card-body
-     p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+   - items.each do |item|
+         .card.mb-4 style=("max-width: 21rem;")
+          - if item.image?
+            =link_to item
+              img.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="220" preserveaspectratio=("xMidYMid slice") role="img" width="100%" src="#{item.image}"
+               title Placeholder
+               rect fill="#868e96" height="100%" width="100%"
+               text dy=".3em" fill="#dee2e6" x="50%" y="50%"
+          - else
+             =link_to item
+              = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top',style: 'width:100%; height:220px;'
+          .card-body
+             - if item.user.image?
+               =link_to user_path(item.user.id)
+                img src="#{item.user.image}" width="25" height="25" class="rounded-circle mb-2 mr-2"
+             - else
+               =link_to user_path(item.user.id)
+                = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2',style: 'width:25px; height:25px;'
 
-   .card style=("width: 18rem;")
-    svg.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="180" preserveaspectratio=("xMidYMid slice") role="img" width="100%" xmlns="http://www.w3.org/2000/svg"
-     title Placeholder
-     rect fill="#868e96" height="100%" width="100%"
-     text dy=".3em" fill="#dee2e6" x="50%" y="50%"
-    .card-body
-     p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+             a=link_to item.tittle, item,class:'text-dark text-center'
+             - if user_signed_in?
+               - if item.favorited_by?(current_user)
+                 a.d-block
+                   = link_to item_favorites_path(item.id), method: :delete
+                    i.fas.fa-heart.pl-1 style="color:#EA352D;"
+                   a.pl-1 = item.favorites.count
+               - else
+                 a.d-block
+                   a= link_to item_favorites_path(item.id), method: :post
+                    i.far.fa-heart.pl-1 style="color:#6c757d;"
+                   a.pl-1= item.favorites.count
+             - else
+                a
+                 i.far.fa-heart style="color:#6c757d;"
+                 = item.favorites.count
+             .small.text-muted.text-right
+               a= item.created_at.strftime('%Y/%m/%d %H:%M')
 
-   .card style=("width: 18rem;")
-    svg.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="180" preserveaspectratio=("xMidYMid slice") role="img" width="100%" xmlns="http://www.w3.org/2000/svg"
-     title Placeholder
-     rect fill="#868e96" height="100%" width="100%"
-     text dy=".3em" fill="#dee2e6" x="50%" y="50%"
-    .card-body
-     p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
-
-   .card style=("width: 18rem;")
-    svg.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="180" preserveaspectratio=("xMidYMid slice") role="img" width="100%" xmlns="http://www.w3.org/2000/svg"
-     title Placeholder
-     rect fill="#868e96" height="100%" width="100%"
-     text dy=".3em" fill="#dee2e6" x="50%" y="50%"
-    .card-body
-     p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
-
-   .card style=("width: 18rem;")
-    svg.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="180" preserveaspectratio=("xMidYMid slice") role="img" width="100%" xmlns="http://www.w3.org/2000/svg"
-     title Placeholder
-     rect fill="#868e96" height="100%" width="100%"
-     text dy=".3em" fill="#dee2e6" x="50%" y="50%"
-    .card-body
-     p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+= paginate @items
+=render partial: 'layouts/footer',locals:{item:@item}

@@ -1,0 +1,32 @@
+=render partial: 'layouts/header',locals:{item:@item}
+
+.text-center.bg-white.mx-auto.my-5 style=("width:600px;")
+  h4.mx-auto.py-5.border-bottom.font-weight-bold シェア情報を入力
+  - if notice
+    =notice
+  -if alert
+   .alert.alert-danger.text-center.mx-auto.font-weight-bold.mt-3 role="notice"  style="width:600px; height:50px;"
+    =alert
+    
+  - if @item.image?
+   = image_tag @item.thumb50.url
+  = form_with model:@item,local:true do |f|
+    = f.label "画像をアップロード" ,class:"pt-3"
+    br/
+    = f.file_field :image,class:"border rounded p-5 "
+    .form-group.mt-5
+      =f.label :シェア品名
+      .badge.badge-danger.m-2 必須
+      =f.text_field :tittle,class: 'form-control mx-auto',id: 'task_tittle',style: 'width:400px;'
+    .form-group.my-5
+      =f.label :商品説明
+      =f.text_area :content,row:5, class: 'form-control mx-auto mb-4',id: 'task_content',style: 'width:400px; height:100px;'
+      a.mr-1 シェア開始日
+      .badge.badge-danger 必須
+      .form-inline.d-flex.justify-content-center.m-2
+        = date_field_tag 'item[share_start_date]', nil,class: 'form-control' ,style: 'width:200px; ',type:"date"
+      a.mr-1 シェア終了日
+      .badge.badge-danger 必須
+      .form-inline.d-flex.justify-content-center.m-2
+        = date_field_tag 'item[share_end_date]', nil,class: 'form-control ',style: 'width:200px;'
+    =f.submit nil,class: 'btn btn-danger mt-3 mb-5',style: 'width:150px;'

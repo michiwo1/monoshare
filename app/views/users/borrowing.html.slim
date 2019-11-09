@@ -1,0 +1,39 @@
+=render partial: 'layouts/header',locals:{item:@item}
+h1.mb-5.p-3  借りているもの一覧
+
+- @borrowing_items.each_slice(4) do |items|
+ card.card-deck
+    - items.each do |item|
+      .card.mb-4 style=("max-width: 21rem;")
+       - if item.image?
+         =link_to item
+          img.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="220px" preserveaspectratio=("xMidYMid slice") role="img" width="100%" src="#{item.image}"
+            h4
+             span.badge.badge-pill.badge-success 借りている
+
+       - else
+         =link_to item
+          = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top',style: 'width:100%; height:220px;'
+          h4
+           span.badge.badge-pill.badge-success 借りている
+       .card-body
+         - if item.user.image?
+            =link_to item.user
+             img src="#{item.user.image}" width="50" height="50" class="rounded-circle mb-2 mr-2"
+         - else
+             =link_to user_path(item.user.id)
+              = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2',style: 'width:40px; height:40px;'
+         h5.d-inline =link_to item.tittle, item,class:'text-dark'
+         hr
+         p = link_to "#{item.user.username}さんから借りています。",item.user,class:'ml-4 text-dark'
+         .d-flex.justify-content-center.mb-2
+          - if item.user.image?
+           =link_to item.user
+             img src="#{item.user.image}" width="25" height="25" class="rounded-circle mb-2 mr-2 "
+          - else
+            = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2',style: 'width:25px; height:25px;'
+          a = "⇨"
+          - if item.user.image?
+           img src="#{item.rentals.last.user.image}" width="25" height="25" class="rounded-circle mb-2 mx-2 "
+          - else
+            = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2',style: 'width:25px; height:25px;'

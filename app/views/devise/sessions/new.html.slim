@@ -1,0 +1,24 @@
+header.text-center.my-5
+ a.navbar-brand href="/" MONOシェア
+
+
+.form-group.text-center.bg-white.mx-auto style=("width:600px;")
+  h4.mx-auto.py-4.border-bottom ログイン
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    = devise_error_messages
+    .field.mt-5
+      = f.label :メールアドレス
+      br/
+      = f.email_field :email, autofocus: true, autocomplete: "email",class: 'form-control mx-auto',style: 'width:200px;'
+    .field.my-4
+      = f.label :パスワード
+      br/
+      = f.password_field :password, autocomplete: "current-password",class: 'form-control mx-auto',style: 'width:200px;'
+    - if devise_mapping.rememberable?
+      .field.my-4
+        = f.check_box :remember_me
+        = f.label :ログインしたままにする
+    .actions
+      = f.submit "ログイン",class: 'button btn btn-danger mt-3 mb-5',style: 'width:150px;'
+
+    = render "devise/shared/links"

@@ -1,0 +1,24 @@
+#carouselExampleIndicators.carousel.slide data-ride="carousel"
+  ol.carousel-indicators
+    li.active data-slide-to="0" data-target="#carouselExampleIndicators"
+    li data-slide-to="1" data-target="#carouselExampleIndicators"
+    li data-slide-to="2" data-target="#carouselExampleIndicators"
+  .carousel-inner
+    .carousel-item.active
+      = image_tag "/assets/d.png",class:'bd-placeholder-img bd-placeholder-img-lg d-block w-100 ',style:'height:400px;,width:800px;'
+        rect fill="#777" height="100%" width="100%"
+        text dy=".3em" fill="#555" x="50%" y="50%"  First slide
+    .carousel-item
+      = image_tag "/assets/e.png",class:'bd-placeholder-img bd-placeholder-img-lg d-block w-100 ',style:'height:400px;,width:800px;'
+        rect fill="#666" height="100%" width="100%"
+        text dy=".3em" fill="#444" x="50%" y="50%"  Second slide
+    .carousel-item
+      = image_tag "/assets/f.png",class:'bd-placeholder-img bd-placeholder-img-lg d-block w-100 ',style:'height:400px;,width:800px;'
+        rect fill="#555" height="100%" width="100%"
+        text dy=".3em" fill="#333" x="50%" y="50%"  Third slide
+  a.carousel-control-prev data-slide="prev" href="#carouselExampleIndicators" role="button"
+    span.carousel-control-prev-icon aria-hidden="true"
+    span.sr-only Previous
+  a.carousel-control-next data-slide="next" href="#carouselExampleIndicators" role="button"
+    span.carousel-control-next-icon aria-hidden="true"
+    span.sr-only Next
