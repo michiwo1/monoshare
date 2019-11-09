@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_084205) do
+ActiveRecord::Schema.define(version: 2019_11_08_082650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,12 +37,12 @@ ActiveRecord::Schema.define(version: 2019_11_06_084205) do
     t.text "content"
     t.integer "state"
     t.string "image"
-    t.integer "share_start_date"
-    t.integer "share_end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.integer "likes_count"
+    t.date "share_start_date"
+    t.date "share_end_date"
   end
 
   create_table "notifications", force: :cascade do |t|

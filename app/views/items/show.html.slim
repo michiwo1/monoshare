@@ -1,17 +1,23 @@
 =render partial: 'layouts/header',locals:{item:@item}
-.bg-white.mx-auto.my-5.pt-3 style=("width:600px;")
+.bg-white.mx-auto.mb-3.mt-5.pt-3 style=("width:650px;")
   h2.font-weight-bold.mb-3.text-center = @item.tittle
+
   .text-center
     - if @item.image?
      = image_tag @item.image.url,class:'my-3 rounded shadow mx-auto',style: 'width:400px; height:300px;'
     - else
      = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top rounded shadow mx-auto',style: 'width:400px; height:300px;'
-
+  .text-center.mt-3
+   .badge.badge-success.mr-1 シェア期間
+   a.mx-1= @item.share_start_date
+   a 〜
+   a.mx-1= @item.share_end_date
   p.p-4.mx-5.text-left= @item.content
-  p.p-3.mx-5.text-left= @item.state
+
+
   .text-center
     - if user_signed_in? && @item.user_id==current_user.id && @item.state == nil
-     p.m-2
+     p.mx-2.my-3
        = link_to '編集',edit_item_path,class: 'btn btn-outline-primary mr-3'
        = link_to '削除',@item,method: :delete, remote:true , data:{ confirm:"タスク「#{@item.tittle}」を削除します。よろしいですか？"}, class: 'btn btn-outline-danger'
     - if current_user != @item.user

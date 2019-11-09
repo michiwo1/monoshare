@@ -10,7 +10,6 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find_by(id: params[:id])
     @comment = @item.comments.build
-
   end
 
   def new
@@ -23,17 +22,66 @@ class ItemsController < ApplicationController
 
   def create
    @item = Item.new(item_params.merge(user_id: current_user.id))
-   if @item.save
-    redirect_to items_url,notice:"シェア『#{@item.tittle}』しました"
+   if @item.share_start_date.nil? || @item.share_end_date.nil?
+     flash[:alert] = "シェア期間を入力してください"
+     redirect_to new_item_path
+     return
    else
-    render :new
+     sabun = (@item.share_start_date - Date.today).to_i
+     unless sabun >= 0
+       flash[:alert] = "シェア開始日は本日以降の日付にできません"
+       redirect_to new_item_path
+       return
+     end
+     sabun = (@item.share_end_date - @item.share_start_date).to_i
+     unless sabun <= 365
+       flash[:alert] = "シェア期間の最長365日間までです"
+       redirect_to new_item_path
+       return
+     end
+     unless sabun >= 1
+       flash[:alert] = "シェア終了日は本日以降の日付でお願いします"
+       redirect_to new_item_path
+       return
+     end
+   end
+   if @item.save
+    redirect_to items_url,notice:"「#{@item.tittle}」をシェアしました"
+   else
+    redirect_to new_item_path,alert:"シェア品名を入力してください"
    end
   end
 
   def update
-    item= current_user.items.find(params[:id])
-    item.update!(item_params)
-    redirect_to item_url,notice:"シェア品「#{item.tittle}」を更新しました"
+    @item= current_user.items.find(params[:id])
+    if @item.share_start_date.nil? || @item.share_end_date.nil?
+      flash[:alert] = "シェア期間を入力してください"
+      redirect_to edit_item_path
+      return
+    else
+      sabun = (@item.share_start_date - Date.today).to_i
+      unless sabun >= 0
+        flash[:alert] = "シェア開始日は本日以降の日付にできません"
+        redirect_to edit_item_path
+        return
+      end
+      sabun = (@item.share_end_date - @item.share_start_date).to_i
+      unless sabun <= 365
+        flash[:alert] = "シェア期間の最長365日間までです"
+        redirect_to edit_item_path
+        return
+      end
+      unless sabun >= 1
+        flash[:alert] = "シェア終了日は本日以降の日付でお願いします"
+        redirect_to edit_item_path
+        return
+      end
+    end
+    if @item.update!(item_params)
+      redirect_to items_url,notice:"シェア品「#{@item.tittle}」を更新しました"
+    else
+      redirect_to edit_item_path,alert:"シェア品名を入力してください"
+    end
   end
 
   def destroy
@@ -110,7 +158,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:tittle,:content,:image,:state)
+    params.require(:item).permit(:tittle,:content,:image,:state,:share_start_date, :share_end_date)
   end
 
 
