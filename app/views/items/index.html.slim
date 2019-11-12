@@ -43,11 +43,11 @@ h2.pb-4.pt-3.d-flex.justify-content-center.bg-white style="color:#6c757d;" ã‚·ã‚
                     i.far.fa-heart.pl-1 style="color:#6c757d;"
                    a.pl-1= item.favorites.count
              - else
-                a
-                 i.far.fa-heart style="color:#6c757d;"
-                 = item.favorites.count
+                 a.d-block
+                   a
+                    i.far.fa-heart.pl-1 style="color:#6c757d;"
+                   a.pl-1= item.favorites.count
              .small.text-muted.text-right
                a= item.created_at.strftime('%Y/%m/%d %H:%M')
 
 = paginate @items
-=render partial: 'layouts/footer',locals:{item:@item}

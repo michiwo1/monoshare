@@ -45,15 +45,17 @@ class ItemsController < ApplicationController
        return
      end
    end
-   if @item.save
+   if @item.save!
     redirect_to items_url,notice:"「#{@item.tittle}」をシェアしました"
    else
+    @item = Item.new(item_params)
     redirect_to new_item_path,alert:"シェア品名を入力してください"
    end
   end
 
   def update
-    @item= current_user.items.find(params[:id])
+    @item = current_user.items.find(params[:id])
+    @item = Item.new(item_params.merge(user_id: current_user.id))
     if @item.share_start_date.nil? || @item.share_end_date.nil?
       flash[:alert] = "シェア期間を入力してください"
       redirect_to edit_item_path
@@ -79,8 +81,10 @@ class ItemsController < ApplicationController
     end
     if @item.update!(item_params)
       redirect_to items_url,notice:"シェア品「#{@item.tittle}」を更新しました"
+      return
     else
       redirect_to edit_item_path,alert:"シェア品名を入力してください"
+      return
     end
   end
 

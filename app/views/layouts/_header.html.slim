@@ -25,6 +25,7 @@ headr
     .nav-item.dropdown
        a.nav-link.dropdown-toggle.p-1.mr-3.text-dark aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"  一覧リスト
        .dropdown-menu.text-center
+         a.dropdown-item = link_to 'ユーザー一覧', users_path,class:"text-dark"
          a.dropdown-item = link_to 'お気に入り一覧', favorite_user_path(current_user.id),class:"text-dark"
          a.dropdown-item = link_to '申請中一覧',  applying_user_path(current_user.id),class:"text-dark"
          a.dropdown-item = link_to '承認待ち一覧', waiting_user_path(current_user.id),class:"text-dark"
@@ -54,7 +55,6 @@ headr
         a.nav-link.dropdown-toggle.p-1.text-dark aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" style="color:#6c757d;" マイページ
         .dropdown-menu.text-center
           a.dropdown-item = link_to "プロフィール", user_path(current_user.id),class:"text-dark"
-          a.dropdown-item = link_to 'ユーザー一覧', users_path,class:"text-dark"
           a.dropdown-item = link_to 'ログアウト', destroy_user_session_path, method: :delete,class:"text-dark"
 
 
