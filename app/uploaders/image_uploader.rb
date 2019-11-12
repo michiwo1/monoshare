@@ -10,11 +10,19 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   if Rails.env.development?
-    storage :file
+    CarrierWave.configure do |config|
+     config.cache_storage = :file
+    end
   elsif Rails.env.test?
-    storage :file
+    CarrierWave.configure do |config|
+
+      config.cache_storage = :file
+    end
   else
-    storage :fog
+    CarrierWave.configure do |config|
+
+      config.cache_storage = :fog 
+    end
   end
 
   def store_dir
@@ -28,4 +36,5 @@ class ImageUploader < CarrierWave::Uploader::Base
   def filename
     original_filename if original_filename
   end
+
 end
