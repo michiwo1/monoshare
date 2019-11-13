@@ -24,24 +24,25 @@ class ItemsController < ApplicationController
    @item = Item.new(item_params.merge(user_id: current_user.id))
    if @item.share_start_date.nil? || @item.share_end_date.nil?
      flash[:alert] = "シェア期間を入力してください"
-     redirect_to new_item_path
+       redirect_to new_item_path
      return
+
    else
      sabun = (@item.share_start_date - Date.today).to_i
      unless sabun >= 0
        flash[:alert] = "シェア開始日は本日以降の日付にできません"
-       redirect_to new_item_path
+       render :new
        return
      end
      sabun = (@item.share_end_date - @item.share_start_date).to_i
      unless sabun <= 365
        flash[:alert] = "シェア期間の最長365日間までです"
-       redirect_to new_item_path
+       render :new
        return
      end
      unless sabun >= 1
        flash[:alert] = "シェア終了日は本日以降の日付でお願いします"
-       redirect_to new_item_path
+       render :new
        return
      end
    end
@@ -49,7 +50,7 @@ class ItemsController < ApplicationController
     redirect_to items_url,notice:"「#{@item.tittle}」をシェアしました"
    else
     @item = Item.new(item_params)
-    redirect_to new_item_path,alert:"シェア品名を入力してください"
+    render :new ,alert:"シェア品名を入力してください"
    end
   end
 
@@ -152,7 +153,7 @@ class ItemsController < ApplicationController
     rental = Rental.find_by(item_id: params[:item_id])
     rental.destroy
     item = Item.find(params[:item_id])
-    item.state = 3
+    item.state = nil
     item.save!
     redirect_to items_path
   end
