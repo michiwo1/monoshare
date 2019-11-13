@@ -5,16 +5,16 @@ h1.mb-5.p-3 申請中一覧
  card.card-deck
     - items.each do |item|
       .card.mb-4 style=("max-width: 21rem;")
+
        - if item.image?
          =link_to item
           img.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="220px" preserveaspectratio=("xMidYMid slice") role="img" width="100%" src="#{item.image}"
-            h4
-             span.badge.badge-pill.badge-danger 申請中
-
+         h4 style="position:absolute; top:10px; left:10px"
+           span.badge.badge-pill.badge-danger 申請中
        - else
           =link_to item
            = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top',style: 'width:100%; height:220px;'
-           h4
+          h4 style="position:absolute; top:10px; left:10px"
             span.badge.badge-pill.badge-danger 申請中
        .card-body
          - if item.user.image?
