@@ -11,7 +11,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   if Rails.env.development?
     CarrierWave.configure do |config|
-     config.cache_storage = :file
+     config.cache_storage = :fog
     end
   elsif Rails.env.test?
     CarrierWave.configure do |config|
@@ -21,7 +21,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   else
     CarrierWave.configure do |config|
 
-      config.cache_storage = :fog 
+      config.cache_storage = :file
     end
   end
 
