@@ -1,7 +1,7 @@
-=render partial: 'layouts/header',locals:{item:@item}
+=render partial: 'layouts/header',locals:{item:@item,borrowing_items:@borrowing_items,waiting_items:@waiting_items,applying_items:@applying_items,lending_items:@lending_items}
 h1.mb-5.p-3 申請中一覧
 
-- @rentals_items.each_slice(4) do |items|
+- @applying_items.each_slice(4) do |items|
  card.card-deck
     - items.each do |item|
       .card.mb-4 style=("max-width: 21rem;")

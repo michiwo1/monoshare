@@ -8,31 +8,47 @@ headr
     .form-inline
      = f.text_field :tittle_cont, class: "form-control mr-sm-2 ", placeholder: '何かお探しですか？',style: 'width:400px; height:45px;'
      = f.submit '検索',class:'button btn btn-outline-success'
-
-
  .d-flex.justify-content-end.mr-5 style="color:#6c757d;"
 
   - if user_signed_in?
     = link_to new_item_path,style:"color:#6c757d;"
-     i.far.fa-handshake.fa-lg.pt-2.mr-1
+     i.far.fa-handshake.fa-lg.pt-2
     = link_to 'シェアする', new_item_path,class:"p-1 mr-4 text-dark",style:"color:#6c757d;"
 
-
-
-
-
-    i.far.fa-file-alt.fa-lg.pt-2.mr-1 style="color:#6c757d;"
+    i.far.fa-file-alt.fa-lg.pt-2 style="color:#6c757d;"
     .nav-item.dropdown
        a.nav-link.dropdown-toggle.p-1.mr-3.text-dark aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"  一覧リスト
        .dropdown-menu.text-center
-         a.dropdown-item = link_to 'ユーザー一覧', users_path,class:"text-dark"
-         a.dropdown-item = link_to 'お気に入り一覧', favorite_user_path(current_user.id),class:"text-dark"
-         a.dropdown-item = link_to '申請中一覧',  applying_user_path(current_user.id),class:"text-dark"
-         a.dropdown-item = link_to '承認待ち一覧', waiting_user_path(current_user.id),class:"text-dark"
-         a.dropdown-item = link_to '貸し出し中一覧', lending_user_path(current_user.id),class:"text-dark"
-         a.dropdown-item = link_to '借りているもの一覧', borrowing_user_path(current_user.id),class:"text-dark"
+         a.dropdown-item
 
+         = link_to 'ユーザー一覧', users_path,class:"text-dark"
+         a.dropdown-item
+         
+         = link_to 'お気に入り一覧', favorite_user_path(current_user.id),class:"text-dark"
+         a.dropdown-item
 
+         = link_to '申請中一覧',  applying_user_path(current_user.id),class:"text-dark "
+         -if applying_items.count != 0
+           a.rounded-circle style="position:absolute; bottom:102px; left:3px; background-color:#EA352D; color:#ffffff; font-size:10px; width:16px; height:16px;"
+             =applying_items.count
+         a.dropdown-item
+
+         = link_to '承認待ち一覧', waiting_user_path(current_user.id),class:"text-dark "
+         -if  waiting_items.count != 0
+           a.rounded-circle style="position:absolute; bottom:72px; left:3px; background-color:#EA352D; color:#ffffff; font-size:10px; width:16px; height:16px;"
+             =waiting_items.count
+         a.dropdown-item
+
+         = link_to '貸し出し中一覧', lending_user_path(current_user.id),class:"text-dark "
+         -if lending_items.count != 0
+           a.rounded-circle style="position:absolute; bottom:42px; left:3px; background-color:#EA352D; color:#ffffff; font-size:10px; width:16px; height:16px;"
+             =lending_items.count
+         a.dropdown-item
+
+         = link_to '借りている物一覧', borrowing_user_path(current_user.id),class:"text-dark "
+         -if borrowing_items.count != 0
+           a.rounded-circle style="position:absolute; bottom:12px; left:3px; background-color:#EA352D; color:#ffffff; font-size:10px; width:16px; height:16px;"
+             =borrowing_items.count
 
     - if unchecked_notifications.any?
      i.far.fa-bell.fa-lg.pt-2.mr-1 style="font-size: 1.3em; color:#EA352D;"
@@ -50,14 +66,11 @@ headr
       = link_to user_path(current_user.id)
        = image_tag "/assets/a.png",class:'border  rounded-circle',style: 'width:30px; height:30px;'
 
-
     .nav-item.dropdown
         a.nav-link.dropdown-toggle.p-1.text-dark aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" style="color:#6c757d;" マイページ
         .dropdown-menu.text-center
           a.dropdown-item = link_to "プロフィール", user_path(current_user.id),class:"text-dark"
           a.dropdown-item = link_to 'ログアウト', destroy_user_session_path, method: :delete,class:"text-dark"
-
-
 
   - else
     = link_to '新規登録', new_user_registration_path,class:'button btn btn-outline-danger mr-3 '

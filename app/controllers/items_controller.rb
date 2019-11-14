@@ -1,10 +1,11 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-
+  
 
   def index
     @items = Item.where(state:nil)
     @items = Item.page(params[:page]).per(16).order('updated_at DESC')
+
   end
 
   def show
@@ -14,6 +15,8 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @borrowing_items = current_user.rentals_items.where(state:'2')
+    @waiting_items = current_user.items.where(state:'1')
   end
 
   def edit
@@ -165,6 +168,8 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:tittle,:content,:image,:state,:share_start_date, :share_end_date)
   end
+
+
 
 
 

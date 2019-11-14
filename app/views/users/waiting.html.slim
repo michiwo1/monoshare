@@ -1,4 +1,4 @@
-=render partial: 'layouts/header',locals:{item:@item}
+=render partial: 'layouts/header',locals:{item:@item,borrowing_items:@borrowing_items,waiting_items:@waiting_items,applying_items:@applying_items,lending_items:@lending_items}
 h1.mb-5.p-3  承認待ち一覧
 
 - @waiting_items.each_slice(4) do |items|
