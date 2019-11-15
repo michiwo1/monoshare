@@ -54,18 +54,18 @@ headr
 
     - text_class = unchecked_notifications.any? ? '' : 'text-dark'
     - text_coler = unchecked_notifications.any? ? '#EA352D' : '#6c757d'
-    a = link_to "通知一覧",notifications_user_path(current_user.id), class: "p-1 mr-4 #{text_class}", style: "color:#{text_coler};", id: "通知一覧"
+    a = link_to "通知一覧",notifications_user_path(current_user), class: "p-1 mr-4 #{text_class}", style: "color:#{text_coler};", id: "通知一覧"
     - if current_user.image?
-      = link_to user_path(current_user.id)
+      = link_to user_path(current_user)
        img src="#{current_user.image}" width="30" height="30" class="rounded-circle"
     - else
-      = link_to user_path(current_user.id)
+      = link_to user_path(current_user)
        = image_tag "/assets/a.png",class:'border  rounded-circle',style: 'width:30px; height:30px;'
 
     .nav-item.dropdown
         a.nav-link.dropdown-toggle.p-1.text-dark aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" style="color:#6c757d;" マイページ
         .dropdown-menu.text-center
-          a.dropdown-item = link_to "プロフィール", user_path(current_user.id),class:"text-dark"
+          a.dropdown-item = link_to "プロフィール", user_path(current_user),class:"text-dark"
           a.dropdown-item = link_to 'ログアウト', destroy_user_session_path, method: :delete,class:"text-dark"
 
   - else
