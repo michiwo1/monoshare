@@ -17,11 +17,12 @@
     br/
     = f.file_field :image,class:"border rounded p-5 "
     .form-group.mt-5
-      =f.label :シェア品名
+      a.mr-1 シェア品名
+      .badge.badge-danger.pb-1 必須
       =f.text_field :tittle,class: 'form-control mx-auto',id: 'task_tittle',id: 'task_tittle',style: 'width:400px;'
     .form-group.my-5
       =f.label :商品説明
-      =f.text_area :content,row:5, class: 'form-control mx-auto mb-4',id: 'task_content',style: 'width:400px;'
+      =f.text_area :content,row:5, class: 'form-control mx-auto mb-4',id: 'task_content',style: 'width:400px; height:100px;'
       a.mr-1 シェア開始日
       .badge.badge-danger 必須
       .form-inline.d-flex.justify-content-center.m-2

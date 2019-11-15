@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  
+
 
   def index
     @items = Item.where(state:nil)
@@ -27,9 +27,8 @@ class ItemsController < ApplicationController
    @item = Item.new(item_params.merge(user_id: current_user.id))
    if @item.share_start_date.nil? || @item.share_end_date.nil?
      flash[:alert] = "シェア期間を入力してください"
-       redirect_to new_item_path
+     render :new
      return
-
    else
      sabun = (@item.share_start_date - Date.today).to_i
      unless sabun >= 0
@@ -49,11 +48,13 @@ class ItemsController < ApplicationController
        return
      end
    end
-   if @item.save!
+   if @item.save
     redirect_to items_url,notice:"「#{@item.tittle}」をシェアしました"
    else
     @item = Item.new(item_params)
-    render :new ,alert:"シェア品名を入力してください"
+    flash[:alert] = "シェア品名を入力してください"
+    render :new
+    return
    end
   end
 
@@ -62,32 +63,33 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params.merge(user_id: current_user.id))
     if @item.share_start_date.nil? || @item.share_end_date.nil?
       flash[:alert] = "シェア期間を入力してください"
-      redirect_to edit_item_path
+      render :edit
       return
     else
       sabun = (@item.share_start_date - Date.today).to_i
       unless sabun >= 0
         flash[:alert] = "シェア開始日は本日以降の日付にできません"
-        redirect_to edit_item_path
+        render :edit
         return
       end
       sabun = (@item.share_end_date - @item.share_start_date).to_i
       unless sabun <= 365
         flash[:alert] = "シェア期間の最長365日間までです"
-        redirect_to edit_item_path
+        render :edit
         return
       end
       unless sabun >= 1
         flash[:alert] = "シェア終了日は本日以降の日付でお願いします"
-        redirect_to edit_item_path
+        render :edit
         return
       end
     end
-    if @item.update!(item_params)
+    if @item.update(item_params)
       redirect_to items_url,notice:"シェア品「#{@item.tittle}」を更新しました"
       return
     else
-      redirect_to edit_item_path,alert:"シェア品名を入力してください"
+      flash[:alert] = "シェア品名を入力してください"
+      render :edit
       return
     end
   end

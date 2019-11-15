@@ -7,8 +7,8 @@
    .alert.alert-danger.text-center.mx-auto.font-weight-bold.mt-3 role="notice"  style="width:600px; height:50px;"
     =alert
 
-  - if @item.image?
-   = image_tag @item.thumb50.url
+  
+
   = form_with model:@item,local:true do |f|
     = f.label "画像をアップロード" ,class:"pt-3"
     br/
