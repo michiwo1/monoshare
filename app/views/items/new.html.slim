@@ -8,13 +8,13 @@
     =alert
 
   
-
+  - # gemのsimple_formを使いたい
   = form_with model:@item,local:true do |f|
     = f.label "画像をアップロード" ,class:"pt-3"
     br/
     = f.file_field :image,class:"border rounded p-5 "
     .form-group.mt-5
-      =f.label :シェア品名
+      =f.label Item.human_attribute_name(:tittle)
       .badge.badge-danger.m-2 必須
       =f.text_field :tittle,class: 'form-control mx-auto',id: 'task_tittle',style: 'width:400px;'
     .form-group.my-5
