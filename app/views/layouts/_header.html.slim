@@ -42,23 +42,19 @@ headr
          = link_to '貸し出し中一覧', lending_user_path(current_user.id),class:"text-dark "
          -if lending_items.count != 0
            a.rounded-circle style="position:absolute; bottom:42px; left:3px; background-color:#EA352D; color:#ffffff; font-size:10px; width:16px; height:16px;"
-             =lending_items.count
+             = lending_items.count
          a.dropdown-item
 
          = link_to '借りている物一覧', borrowing_user_path(current_user.id),class:"text-dark "
          -if borrowing_items.count != 0
            a.rounded-circle style="position:absolute; bottom:12px; left:3px; background-color:#EA352D; color:#ffffff; font-size:10px; width:16px; height:16px;"
-             =borrowing_items.count
+             = borrowing_items.count
 
-    - if unchecked_notifications.any?
-     i.far.fa-bell.fa-lg.pt-2.mr-1 style="font-size: 1.3em; color:#EA352D;"
-    - else
-     i.far.fa-bell.fa-lg.pt-2.mr-1 style="font-size: 1.3em; color:#6c757d;"
-    - if unchecked_notifications.any?
-       a = link_to "通知一覧",notifications_user_path(current_user.id),class:"p-1 mr-4 ",style:"color:#EA352D;",id:"通知一覧"
-    - else
-       a = link_to "通知一覧",notifications_user_path(current_user.id),class:"p-1 mr-4 text-dark",style:"color:#6c757d;",id:"通知一覧"
+    i.far.fa-bell.fa-lg.pt-2.mr-1 style="font-size: 1.3em; color:#{ unchecked_notifications.any? ? '#EA352D' : '#6c757d' };"
 
+    - text_class = unchecked_notifications.any? ? '' : 'text-dark'
+    - text_coler = unchecked_notifications.any? ? '#EA352D' : '#6c757d'
+    a = link_to "通知一覧",notifications_user_path(current_user.id), class: "p-1 mr-4 #{text_class}", style: "color:#{text_coler};", id: "通知一覧"
     - if current_user.image?
       = link_to user_path(current_user.id)
        img src="#{current_user.image}" width="30" height="30" class="rounded-circle"
