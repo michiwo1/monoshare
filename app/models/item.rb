@@ -19,7 +19,7 @@ class Item < ApplicationRecord
   end
 
   def rentaled_by?(user)
-        rentals.where(user_id: user.id).exists?
+    rentals.where(user_id: user.id).exists?
   end
 
   def notification_comment!(current_user, comment_id)
@@ -47,9 +47,14 @@ class Item < ApplicationRecord
     notification.save if notification.valid?
   end
 
+  def notification_by_type(current_user, type)
+    notifications.where(visitor: current_user, visited_id: user_id, action: type)
+  end
+
   def notification_favorite(current_user)
     # すでに「いいね」されているか検索
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and item_id = ? and action = ? ", current_user.id, user_id, id, 'favorite'])
+    #temp = Notification.where(["visitor_id = ? and visited_id = ? and item_id = ? and action = ? ", current_user.id, user_id, id, 'favorite'])
+    temp = notification_by_type(current_user, type)
     # いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
@@ -67,7 +72,7 @@ class Item < ApplicationRecord
 
   def notification_apply(current_user)
     # すでに「いいね」されているか検索
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and item_id = ? and action = ? ", current_user.id, user_id, id, 'apply'])
+    temp = notification_by_type(current_user, 'apply')
     # いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
@@ -85,7 +90,7 @@ class Item < ApplicationRecord
 
   def notification_cancel(current_user)
     # すでに「いいね」されているか検索
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and item_id = ? and action = ? ", current_user.id, user_id, id, 'cancel'])
+    temp = notification_by_type(current_user, 'cancel')
     # いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
@@ -159,7 +164,6 @@ class Item < ApplicationRecord
   end
 
   def favorited_by?(user)
-        favorites.where(user_id: user.id).exists?
+    favorites.where(user_id: user.id).exists?
   end
-
 end
