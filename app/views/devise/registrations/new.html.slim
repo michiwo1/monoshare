@@ -1,5 +1,7 @@
 header.text-center.my-5
- a.navbar-brand href="/" MONOシェア
+ = link_to "/"
+   = image_tag "/assets/logo.png",class:'rounded-circle mb-3',style: 'width:50px; height:50px;'
+   a.navbar-brand.font-weight-bold.text-dark href="/" MONOシェア
  - if notice
   p.alert alert-danger = notice role=("notice")
  - if alert

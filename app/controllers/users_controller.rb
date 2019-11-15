@@ -15,7 +15,7 @@ before_action :authenticate_user!
 
   def applying
     @user = current_user
-    @rentals_items = @user.rentals_items.where(state:'1')
+    @applying_items = @user.rentals_items.where(state:'1')
   end
 
   def waiting
@@ -46,6 +46,7 @@ before_action :authenticate_user!
     @user = User.find(params[:id])
     @items = @user.items
     @favorite_items = @user.favorite_items
+
   end
 
 end

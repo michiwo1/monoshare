@@ -3,11 +3,13 @@ class Item < ApplicationRecord
   belongs_to :user
   validates :user_id, presence: true
   validates :tittle, presence: true
-  
+  validates :share_start_date, presence: true
+  validates :share_end_date, presence: true
   has_many :rentals
   has_many :notifications, dependent: :destroy
   has_many :favorites
   has_many :comments,dependent: :destroy
+  
 
   def rentaled_by?(user)
         rentals.where(user_id: user.id).exists?

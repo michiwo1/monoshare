@@ -1,5 +1,6 @@
-=render partial: 'layouts/header',locals:{item:@item}
+=render partial: 'layouts/header',locals:{item:@item,borrowing_items:@borrowing_items,waiting_items:@waiting_items,applying_items:@applying_items,lending_items:@lending_items}
 h1.mb-5.p-3  借りているもの一覧
+
 
 - @borrowing_items.each_slice(4) do |items|
  card.card-deck
@@ -8,13 +9,12 @@ h1.mb-5.p-3  借りているもの一覧
        - if item.image?
          =link_to item
           img.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="220px" preserveaspectratio=("xMidYMid slice") role="img" width="100%" src="#{item.image}"
-            h4
+            h4 style="position:absolute; top:10px; left:10px"
              span.badge.badge-pill.badge-success 借りている
-
        - else
          =link_to item
           = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top',style: 'width:100%; height:220px;'
-          h4
+          h4 style="position:absolute; top:10px; left:10px"
            span.badge.badge-pill.badge-success 借りている
        .card-body
          - if item.user.image?

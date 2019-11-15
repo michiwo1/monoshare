@@ -1,4 +1,4 @@
-=render partial: 'layouts/header',locals:{item:@item}
+=render partial: 'layouts/header',locals:{item:@item,borrowing_items:@borrowing_items,waiting_items:@waiting_items,applying_items:@applying_items,lending_items:@lending_items}
 h1.mb-5.p-3 お気に入り一覧
 - @favorite_items.each_slice(4) do |items|
  card.card-deck
@@ -11,15 +11,13 @@ h1.mb-5.p-3 お気に入り一覧
          =link_to item
           = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top',style: 'width:100%; height:220px;'
        - if item.state == 2
-         h4
-          span.badge.badge-pill.badge-success 貸し出し中
        .card-body
         - if item.user.image?
           =link_to user_path
-           img src="#{item.user.image}" width="50" height="50" class="rounded-circle mb-2 mr-2"
+           img src="#{item.user.image}" width="25" height="25" class="rounded-circle mb-2 mr-2"
         - else
           =link_to user_path(item.user.id)
-           = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2',style: 'width:40px; height:40px;'
+           = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2',style: 'width:25px; height:25px;'
         a=link_to item.tittle, item,class:'text-dark'
         - if item.favorited_by?(current_user)
             /! ログインしているユーザーがファボしたかどうかで分岐
@@ -32,3 +30,5 @@ h1.mb-5.p-3 お気に入り一覧
               = link_to item_favorites_path(item.id), method: :post
                i.far.fa-heart style="color:#6c757d;"
               a.pl-1=item.favorites.count
+        .small.text-muted.text-right
+          a= item.created_at.strftime('%Y/%m/%d %H:%M')
