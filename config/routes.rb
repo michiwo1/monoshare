@@ -7,22 +7,25 @@ Rails.application.routes.draw do
   resources :notifications, only: :index
 
   resources :users do
-    get :applying, on: :member
-    get :waiting, on: :member
-    get :lending, on: :member
-    get :borrowing, on: :member
-    get :notifications, on: :member
-    get :favorite, on: :member
+    member do
+      get :applying
+      get :waiting
+      get :lending
+      get :borrowing
+      get :notifications
+      get :favorite
+    end
   end
 
   resources :items do
-    post :apply, on: :member
-    post :cancel, on: :member
-    post :approve, on: :member
-    post :reject, on: :member
-    post :complete, on: :member
-    resource :favorites, only: [:create,:destroy]
-    resource :comments, only: [:create,:destroy]
+    member do
+      post :apply
+      post :cancel
+      post :approve
+      post :reject
+      post :complete
+    end
+    resource :favorites, only: %i[create destroy]
+    resource :comments, only: %i[create destroy]
   end
-
 end
