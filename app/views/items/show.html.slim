@@ -1,12 +1,12 @@
 =render partial: 'layouts/header',locals:{item:@item,borrowing_items:@borrowing_items,waiting_items:@waiting_items,applying_items:@applying_items,lending_items:@lending_items}
-.bg-white.mx-auto.mb-3.mt-5.pt-3 style=("width:650px;")
+.bg-white.mx-auto.mb-3.mt-5.pt-3.items__background
 
   h2.font-weight-bold.mb-3.text-center = @item.tittle
   .text-center
     - if @item.image?
-     = image_tag @item.image.url,class:'my-3 rounded shadow mx-auto',style: 'width:400px; height:300px;'
+     = image_tag @item.image.url,class:'my-3 rounded shadow mx-auto item__image'
     - else
-     = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top rounded shadow mx-auto',style: 'width:400px; height:300px;'
+     = image_tag "/assets/k.png",class:'rounded shadow mx-auto item__image'
   .text-center.mt-3
    .badge.badge-success.mr-1 シェア期間
    a.mx-1= @item.share_start_date.strftime('%Y年%m月%d日')
@@ -29,48 +29,48 @@
 
   - if @item.user.image?
     a=link_to user_path(@item.user.id)
-     img src="#{@item.user.image}" width="30" height="30" class="rounded-circle mb-2 mr-2 "
+     img src="#{@item.user.image}" class="rounded-circle mb-2 mr-2 item__user__img"
   - else
     a=link_to user_path(@item.user.id)
-      = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2',style: 'width:30px; height:30px;'
+      = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2 item__user__img'
   h5.d-inline.mr-4= link_to @item.user.username, "/users/#{@item.user_id}" ,class:'text-dark'
 
   - if user_signed_in?
      - if @item.favorited_by?(current_user)
        a
          = link_to item_favorites_path(@item.id), method: :delete
-          i.fas.fa-heart style="color:#EA352D;"
+          i.fas.fa-heart.items-card__card-like-icon
          a.pl-1= @item.favorites.count
          a.ml-1 いいね済み
      - else
        a
          = link_to item_favorites_path(@item.id), method: :post
-          i.far.fa-heart style="color:#6c757d;"
+          i.far.fa-heart.items-card__card-unlike-icon
          a.pl-1 = @item.favorites.count
          a.ml-1 件のいいね
   - else
       p
-       i.far.fa-heart style="color:#6c757d;"
+       i.far.fa-heart.items-card__card-unlike-icon
        = item.favorites.count
 
-.comment-wrapper class=" mx-auto my-2" style=("width:600px;")
+.comment-wrapper class=" mx-auto my-2 items__background"
  p.border-bottom コメント一覧
  - @item.comments.each do |c|
    - unless c.user.blank?
      - if c.user.image?
        a=link_to user_path(c.user.id)
-        img src="#{c.user.image}" width="30" height="30" class="rounded-circle mb-2 mr-2 "
+        img src="#{c.user.image}" class="rounded-circle mb-2 mr-2 items-comments__comments-user-imag"
      - else
        a=link_to user_path(c.user.id)
-         = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2',style: 'width:30px; height:30px;'
+         = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2 items-comments__comments-user-imag'
      a.font-weight-bold= c.user.username
      p= c.content
      - if current_user == c.user
-      = link_to "削除", item_comments_path(@comment.item_id, @comment.id), method: :delete,class:"badge badge-danger "
+      = link_to "削除", item_comments_path(@comment.item_id, @comment.id), method: :delete,class:"badge badge-danger mb-1"
      hr class="my-0"
  - if user_signed_in?
    = form_with(model: [@item, @comment], local: true) do |f|
      = f.text_area :content, class: "form-control", rows: 5
-     = button_tag type: "submit", class: "btn btn-success float-right mt-1 mb-2" do
+     = button_tag type: "submit", class: "btn btn-success float-right mt-2 mb-3" do
        i.far.fa-comments
        | コメントする

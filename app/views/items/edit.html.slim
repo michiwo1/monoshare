@@ -1,16 +1,16 @@
 =render partial: 'layouts/header',locals:{item:@item,borrowing_items:@borrowing_items,waiting_items:@waiting_items,applying_items:@applying_items,lending_items:@lending_items}
 
-.text-center.bg-white.mx-auto.my-5 style=("width:600px;")
+.text-center.bg-white.mx-auto.my-5.items__background
   h4.mx-auto.py-5.border-bottom.font-weight-bold シェア情報を入力
   - if notice
     =notice
   -if alert
-   .alert.alert-danger.text-center.mx-auto.font-weight-bold.mt-3 role="alert"  style="width:600px; height:50px;"
+   .alert.alert-danger.text-center.mx-auto.font-weight-bold.mt-3.items__alert
     =alert
   - if @item.image?
-   = image_tag @item.image.url,style: 'width:400px; height:300px;'
+   = image_tag @item.image.url,class: 'item__image'
   - else
-    = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top',style: 'width:400px; height:300px;'
+    = image_tag "/assets/k.png",class:'item__image'
 
   = form_with model:@item,local:true do |f|
     = f.label "画像を変更",class:"pt-3"
@@ -19,16 +19,16 @@
     .form-group.mt-5
       a.mr-1 シェア品名
       .badge.badge-danger.pb-1 必須
-      =f.text_field :tittle,class: 'form-control mx-auto',id: 'task_tittle',id: 'task_tittle',style: 'width:400px;'
+      =f.text_field :tittle,class: 'form-control mx-auto',id: 'task_tittle',id: 'task_tittle'
     .form-group.my-5
       =f.label :商品説明
-      =f.text_area :content,row:5, class: 'form-control mx-auto mb-4',id: 'task_content',style: 'width:400px; height:100px;'
+      =f.text_area :content,row:5, class: 'form-control mx-auto mb-4',id: 'task_content item__textarea'
       a.mr-1 シェア開始日
       .badge.badge-danger 必須
       .form-inline.d-flex.justify-content-center.m-2
-        = date_field_tag 'item[share_start_date]', nil,class: 'form-control',style: 'width:200px;',id: 'task_share_start_date'
+        = date_field_tag 'item[share_start_date]', nil,class: 'form-control',id: 'task_share_start_date'
       a.mr-1 シェア終了日
       .badge.badge-danger 必須
       .form-inline.d-flex.justify-content-center.m-2
-        = date_field_tag 'item[share_end_date]', nil,class: 'form-control ',style: 'width:200px;',id: 'task_share_end_date'
-    =f.submit nil,class: 'btn btn-primary mt-3 mb-5',style: 'width:150px;'
+        = date_field_tag 'item[share_end_date]', nil,class: 'form-control ',id: 'task_share_end_date'
+    =f.submit nil,class: 'btn btn-primary mt-3 mb-5 item__submit'
