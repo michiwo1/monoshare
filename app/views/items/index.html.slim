@@ -2,50 +2,48 @@
 =render partial: 'partial/carousel'
 
 - if notice
- .alert.alert-secondary.text-center.mx-auto.font-weight-bold.mt-3 role="notice"  style="width:600px; height:50px;"
+ .alert.alert-secondary.text-center.mx-auto.font-weight-bold.mt-3.items__notice role="notice"
   =notice
 -if alert
- .alert.alert-secondary.text-center.mx-auto.font-weight-bold.mt-3 role="notice"  style="width:600px; height:50px;"
+ .alert.alert-secondary.text-center.mx-auto.font-weight-bold.mt-3.alert__style.items__alert role="notice"
   =alert
-h2.pb-4.pt-3.d-flex.justify-content-center.bg-white style="color:#6c757d;" シェア一覧
+h2.pb-4.pt-3.d-flex.justify-content-center.bg-white.items__title  シェア一覧
 
 - @searchs.each_slice(4) do |items|
- card.card-deck
+ card.card-deck.items-card
    - items.each do |item|
-         .card.mb-4 style=("max-width: 21rem;")
+         .card.mb-4.items-card__card-size
           - if item.image?
             =link_to item
               img.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="220" preserveaspectratio=("xMidYMid slice") role="img" width="100%" src="#{item.image}"
-               title Placeholder
-               rect fill="#868e96" height="100%" width="100%"
-               text dy=".3em" fill="#dee2e6" x="50%" y="50%"
+
           - else
              =link_to item
-              = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top',style: 'width:100%; height:220px;'
+              = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top items-card__card-img'
           .card-body
              - if item.user.image?
                =link_to user_path(item.user.id)
-                img src="#{item.user.image}" width="25" height="25" class="rounded-circle mb-2 mr-2"
+                img src="#{item.user.image}" class="rounded-circle mb-2 mr-2 items-card__card-user-img"
              - else
                =link_to user_path(item.user.id)
-                = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2',style: 'width:25px; height:25px;'
+                = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2 items-card__card-user-img'
 
              a=link_to item.tittle, item,class:'text-dark text-center'
              - if user_signed_in?
                - if item.favorited_by?(current_user)
                  a.d-block
                    = link_to item_favorites_path(item.id), method: :delete
-                    i.fas.fa-heart.pl-1 style="color:#EA352D;"
+                    i.fas.fa-heart.pl-1.items-card__card-like-icon
                    a.pl-1 = item.favorites.count
                - else
                  a.d-block
                    a= link_to item_favorites_path(item.id), method: :post
-                    i.far.fa-heart.pl-1 style="color:#6c757d;"
+                    i.far.fa-heart.pl-1.items-card__card-unlike-icon
                    a.pl-1= item.favorites.count
              - else
                  a.d-block
                    a
-                    i.far.fa-heart.pl-1 style="color:#6c757d;"
+                    i.far.fa-heart.pl-1.items-card__card-unlike-icon 
                    a.pl-1= item.favorites.count
              .small.text-muted.text-right
                a= item.created_at.strftime('%Y/%m/%d %H:%M')
