@@ -23,7 +23,7 @@ headr
 
          = link_to 'ユーザー一覧', users_path,class:"text-dark"
          a.dropdown-item
-         
+
          = link_to 'お気に入り一覧', favorite_user_path(current_user.id),class:"text-dark"
          a.dropdown-item
 
@@ -64,7 +64,7 @@ headr
        img src="#{current_user.image}" width="30" height="30" class="rounded-circle"
     - else
       = link_to user_path(current_user.id)
-       = image_tag "/assets/a.png",class:'border  rounded-circle',style: 'width:30px; height:30px;'
+       = image_tag "/assets/a.png",class:'border rounded-circle',style: 'width:30px; height:30px;'
 
     .nav-item.dropdown
         a.nav-link.dropdown-toggle.p-1.text-dark aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" style="color:#6c757d;" マイページ

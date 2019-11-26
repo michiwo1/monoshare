@@ -15,11 +15,10 @@ h2.pb-4.pt-3.d-flex.justify-content-center.bg-white.items__title  シェア一�
          .card.mb-4.items-card__card-size
           - if item.image?
             =link_to item
-              img.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="220" preserveaspectratio=("xMidYMid slice") role="img" width="100%" src="#{item.image}"
-
+              img.bd-placeholder-img.card-img-top.items-card__card-item-img src="#{item.image}"
           - else
              =link_to item
-              = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top items-card__card-img'
+              = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top items-card__card-item-img'
           .card-body
              - if item.user.image?
                =link_to user_path(item.user.id)
@@ -43,7 +42,7 @@ h2.pb-4.pt-3.d-flex.justify-content-center.bg-white.items__title  シェア一�
              - else
                  a.d-block
                    a
-                    i.far.fa-heart.pl-1.items-card__card-unlike-icon 
+                    i.far.fa-heart.pl-1.items-card__card-unlike-icon
                    a.pl-1= item.favorites.count
              .small.text-muted.text-right
                a= item.created_at.strftime('%Y/%m/%d %H:%M')

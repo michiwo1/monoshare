@@ -11,3 +11,28 @@
 %badge {
   font-size: 10%;
 }
+
+%card-size {
+  max-width: 21rem;
+}
+
+%card-badge {
+  position:absolute;
+  top: 10px;
+  left: 10px;
+}
+
+%card-item-img {
+  width: 100%;
+  height: 220px;
+}
+
+%card-user-img {
+  width: 50px;
+  height: 50px;
+}
+
+%card-item-user-img {
+  width:25px;
+  height:25px;
+}

@@ -2,35 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.n-circle {
-  background-color: rgb(234, 53, 45);
-  color: rgb(255, 255, 255);
-  font-size: 12px;
-  height: 20px;
-  left: 6px;
-  line-height: 20px;
-  position: absolute;
-  text-align: center;
-  top: -2px;
-  width: 20px;
-  border-radius: 50%;
-}
+@import "global";
 
-.carousel-item .img-fluid {
-  width:100%;
-  height:auto;
-}
+.users-card {
 
-.carousel-item{
-  height: auto;
-}
+  &__card-size {
+    @extend %card-size;
+  }
 
-.carousel-item a {
-  display: block;
-  width:100%;
-}
+  &__card-badge {
+    @extend %card-badge;
+  }
 
-.carousel-item .show-image {
-  display: block;
-  width:100%;
+  &__card-item-img {
+    @extend %card-item-img;
+  }
+
+  &__card-user-img {
+    @extend %card-user-img;
+  }
+
+  &__card-item-user-img {
+    @extend %card-item-user-img;
+  }
+
 }
