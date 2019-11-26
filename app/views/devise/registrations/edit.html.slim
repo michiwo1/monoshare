@@ -31,9 +31,9 @@
       br/
       = f.text_area :self_introduction, autofocus: true, autocomplete: "self_introduction" ,class: 'form-control mx-auto'
     .field.my-4.pb-5
-      = f.label :リクエスト
+      = f.label :シェア品のリクエスト
       br/
-      = f.text_area :request, autofocus: true, autocomplete: "request",class: 'form-control mx-auto'
+      = f.text_area :request, autofocus: true, autocomplete: "request",class: 'form-control mx-auto', placeholder: '例) 自転車をシェアして欲しいです。'
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       div
         | Currently waiting confirmation for: #{resource.unconfirmed_email}
