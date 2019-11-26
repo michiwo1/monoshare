@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
    else
      sabun = (@item.share_start_date - Date.today).to_i
      unless sabun >= 0
-       flash[:alert] = "シェア開始日は本日以降の日付にできません"
+       flash[:alert] = "シェア開始日は本日より以前の日付にできません"
        render :new
        return
      end
@@ -68,7 +68,7 @@ class ItemsController < ApplicationController
     else
       sabun = (@item.share_start_date - Date.today).to_i
       unless sabun >= 0
-        flash[:alert] = "シェア開始日は本日以降の日付にできません"
+        flash[:alert] = "シェア開始日は本日より以前の日付にできません"
         render :edit
         return
       end

@@ -11,6 +11,9 @@ headr
  .d-flex.justify-content-end.mr-5.header-color
 
   - if user_signed_in?
+    = link_to "/",class:"header-color"
+     i.fas.fa-home.fa-lg.pt-1
+    = link_to 'ホームに戻る', "/",class:"p-1 mr-4 text-dark header-color"
     = link_to new_item_path,class:"header-color"
      i.far.fa-handshake.fa-lg.pt-2.mr-1
     = link_to 'シェアする', new_item_path,class:"p-1 mr-4 text-dark header-color"
