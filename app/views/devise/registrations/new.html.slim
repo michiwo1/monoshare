@@ -1,40 +1,40 @@
 header.text-center.my-5
  = link_to "/"
-   = image_tag "/assets/logo.png",class:'rounded-circle mb-3',style: 'width:50px; height:50px;'
+   = image_tag "/assets/logo.png",class:'rounded-circle mb-3 devise__logo'
    a.navbar-brand.font-weight-bold.text-dark href="/" MONOシェア
  - if notice
   p.alert alert-danger = notice role=("notice")
  - if alert
   p.alert alert-danger = alert role=("alert")
-.form-group.text-center.bg-white.mx-auto style=("width:600px;")
+.form-group.text-center.bg-white.mx-auto.devise__sign__background
   h4.mx-auto.py-5.border-bottom 新規ユーザー登録
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = devise_error_messages
-    /! サインアップ時に名前を入力できるようにフォームを追加
+
     .field.mt-5
       = f.label :ユーザー名
       .badge.badge-danger.m-2 必須
       br/
-      = f.text_field :username, autofocus: true,autocomplete: "username",class: 'form-control mx-auto',style: 'width:200px;'
+      = f.text_field :username, autofocus: true,autocomplete: "username",class: 'form-control mx-auto'
     .field.my-4
       = f.label :メールアドレス
       .badge.badge-danger.m-2 必須
       br/
-      = f.email_field :email, autofocus: true, autocomplete: "email",class: 'form-control mx-auto',style: 'width:200px;'
+      = f.email_field :email, autofocus: true, autocomplete: "email",class: 'form-control mx-auto'
     .field.my-4
       = f.label :パスワード
       - if @minimum_password_length
-        em
+
           | (#{@minimum_password_length} 文字以上)
       .badge.badge-danger.m-2 必須
       br/
-      = f.password_field :password, autocomplete: "new-password",class: 'form-control mx-auto',style: 'width:200px;'
+      = f.password_field :password, autocomplete: "new-password",class: 'form-control mx-auto'
     .field.my-4
       = f.label :パスワード確認
       .badge.badge-danger.m-2 必須
       br/
-      = f.password_field :password_confirmation, autocomplete: "new-password",class: 'form-control mx-auto',style: 'width:200px;'
+      = f.password_field :password_confirmation, autocomplete: "new-password",class: 'form-control mx-auto'
     .actions
-      = f.submit "登録" ,class: 'button btn btn-danger mt-3 mb-5',style: 'width:150px;'
+      = f.submit "登録" ,class: 'button btn btn-danger mt-3 mb-5 devise__button'
       p= render "devise/shared/links"
     hr

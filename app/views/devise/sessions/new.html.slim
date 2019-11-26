@@ -1,26 +1,26 @@
 header.text-center.my-5
  = link_to "/"
-  = image_tag "/assets/logo.png",class:'rounded-circle mb-3',style: 'width:50px; height:50px;'
+  = image_tag "/assets/logo.png",class:'rounded-circle mb-3 devise__logo'
   a.navbar-brand.font-weight-bold.text-dark href="/" MONOシェア
 
 
-.form-group.text-center.bg-white.mx-auto style=("width:600px;")
+.form-group.text-center.bg-white.mx-auto.devise__sign__background
   h4.mx-auto.py-4.border-bottom ログイン
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     = devise_error_messages
     .field.mt-5
       = f.label :メールアドレス
       br/
-      = f.email_field :email, autofocus: true, autocomplete: "email",class: 'form-control mx-auto',style: 'width:200px;'
+      = f.email_field :email, autofocus: true, autocomplete: "email",class: 'form-control mx-auto'
     .field.my-4
       = f.label :パスワード
       br/
-      = f.password_field :password, autocomplete: "current-password",class: 'form-control mx-auto',style: 'width:200px;'
+      = f.password_field :password, autocomplete: "current-password",class: 'form-control mx-auto'
     - if devise_mapping.rememberable?
       .field.my-4
         = f.check_box :remember_me
         = f.label :ログインしたままにする
     .actions
-      = f.submit "ログイン",class: 'button btn btn-danger mt-3 mb-5',style: 'width:150px;'
+      = f.submit "ログイン",class: 'button btn btn-danger mt-3 mb-5 devise__button'
 
     = render "devise/shared/links"

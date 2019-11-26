@@ -1,0 +1,75 @@
+.header__logo {
+  width: 50px;
+  height: 50px;
+}
+
+.header-color {
+  color: #6c757d;
+}
+
+.header-user-img {
+  width:30px;
+  height:30px;
+}
+
+
+
+.header-notifications {
+
+  &__icn-unchecked {
+    font-size: 1.3em;
+    color: #EA352D;
+  }
+
+  &__icn-checked {
+    font-size: 1.3em;
+    color: #6c757d;
+  }
+
+  &__unchecked {
+    color: #EA352D;
+  }
+
+  &__checked {
+    color: #6c757d;
+  }
+
+}
+
+.dropdown-menu {
+
+  &__menu-1 {
+    @extend %dropdown-menu;
+    position: absolute;
+    bottom: 102px;
+    left: 3px;
+  }
+
+  &__menu-2 {
+    @extend %dropdown-menu;
+    position: absolute;
+    bottom: 72px;
+    left: 3px;
+  }
+
+  &__menu-3 {
+    @extend %dropdown-menu;
+    position: absolute;
+    bottom: 42px;
+    left: 3px;
+  }
+
+  &__menu-4 {
+    @extend %dropdown-menu;
+    position: absolute;
+    bottom: 12px;
+    left: 3px;
+  }
+
+}
+
+
+input[type=text] {
+  width: 400px;
+  height: 45px;
+}

@@ -3,18 +3,16 @@
     li.active data-slide-to="0" data-target="#carouselExampleIndicators"
     li data-slide-to="1" data-target="#carouselExampleIndicators"
     li data-slide-to="2" data-target="#carouselExampleIndicators"
-  .carousel-inner style='height:400px;,width:100%;'
-    .carousel-item.active
-      = image_tag "/assets/d.png",class:'bd-placeholder-img bd-placeholder-img-lg d-block w-100 ',style:'height:auto;,width:100%;'
+  .carousel-inner.carousel-item-inner
+    .carousel-item.active.carousel-item
+      = image_tag "/assets/d.png",class:'bd-placeholder-img bd-placeholder-img-lg d-block w-100 '
 
-    .carousel-item
-      = image_tag "/assets/e.png",class:'bd-placeholder-img bd-placeholder-img-lg d-block w-100 ',style:'height:auto;,width:100%;'
-        rect fill="#666" height="100%" width="100%"
-        text dy=".3em" fill="#444" x="50%" y="50%"  Second slide
-    .carousel-item
-      = image_tag "/assets/f.png",class:'bd-placeholder-img bd-placeholder-img-lg d-block w-100 ',style:'height:auto;,width:100%;'
-        rect fill="#555" height="100%" width="100%"
-        text dy=".3em" fill="#333" x="50%" y="50%"  Third slide
+    .carousel-item.carousel-item
+      = image_tag "/assets/e.png",class:'bd-placeholder-img bd-placeholder-img-lg d-block w-100 '
+
+    .carousel-item.carousel-item
+      = image_tag "/assets/f.png",class:'bd-placeholder-img bd-placeholder-img-lg d-block w-100 '
+
   a.carousel-control-prev data-slide="prev" href="#carouselExampleIndicators" role="button"
     span.carousel-control-prev-icon aria-hidden="true"
     span.sr-only Previous

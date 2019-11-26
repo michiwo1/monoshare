@@ -2,20 +2,20 @@ headr
 .shadow.pt-2.pb-3.px-3.mb-0.bg-white.rounded
  nav.navbar.navbar-light.bg-white.d-flex.justify-content-center
   = link_to "/"
-   = image_tag "/assets/logo.png",class:'rounded-circle mb-2',style: 'width:50px; height:50px;'
+   = image_tag "/assets/logo.png",class:'rounded-circle mb-2 header__logo'
    a.navbar-brand.font-weight-bold href="/" MONOシェア
   = search_form_for @search, url: items_path do |f|
     .form-inline
-     = f.text_field :tittle_cont, class: "form-control mr-sm-2 ", placeholder: '何かお探しですか？',style: 'width:400px; height:45px;'
+     = f.text_field :tittle_cont, class: "form-control mr-sm-2", placeholder: '何かお探しですか？'
      = f.submit '検索',class:'button btn btn-outline-success'
- .d-flex.justify-content-end.mr-5 style="color:#6c757d;"
+ .d-flex.justify-content-end.mr-5.header-color
 
   - if user_signed_in?
-    = link_to new_item_path,style:"color:#6c757d;"
+    = link_to new_item_path,class:"header-color"
      i.far.fa-handshake.fa-lg.pt-2
-    = link_to 'シェアする', new_item_path,class:"p-1 mr-4 text-dark",style:"color:#6c757d;"
+    = link_to 'シェアする', new_item_path,class:"p-1 mr-4 text-dark header-color"
 
-    i.far.fa-file-alt.fa-lg.pt-2 style="color:#6c757d;"
+    i.far.fa-file-alt.fa-lg.pt-2 class="header-color"
     .nav-item.dropdown
        a.nav-link.dropdown-toggle.p-1.mr-3.text-dark aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"  一覧リスト
        .dropdown-menu.text-center
@@ -29,45 +29,43 @@ headr
 
          = link_to '申請中一覧',  applying_user_path(current_user.id),class:"text-dark "
          -if applying_items.count != 0
-           a.rounded-circle style="position:absolute; bottom:102px; left:3px; background-color:#EA352D; color:#ffffff; font-size:10px; width:16px; height:16px;"
+           a.rounded-circle.dropdown-menu__menu-1
              =applying_items.count
          a.dropdown-item
 
          = link_to '承認待ち一覧', waiting_user_path(current_user.id),class:"text-dark "
          -if  waiting_items.count != 0
-           a.rounded-circle style="position:absolute; bottom:72px; left:3px; background-color:#EA352D; color:#ffffff; font-size:10px; width:16px; height:16px;"
+           a.rounded-circle.dropdown-menu__menu-2
              =waiting_items.count
          a.dropdown-item
 
          = link_to '貸し出し中一覧', lending_user_path(current_user.id),class:"text-dark "
          -if lending_items.count != 0
-           a.rounded-circle style="position:absolute; bottom:42px; left:3px; background-color:#EA352D; color:#ffffff; font-size:10px; width:16px; height:16px;"
+           a.rounded-circle.dropdown-menu__menu-3
              =lending_items.count
          a.dropdown-item
 
-         = link_to '借りている物一覧', borrowing_user_path(current_user.id),class:"text-dark "
+         = link_to '借りている物一覧', borrowing_user_path(current_user.id),class:"text-dark"
          -if borrowing_items.count != 0
-           a.rounded-circle style="position:absolute; bottom:12px; left:3px; background-color:#EA352D; color:#ffffff; font-size:10px; width:16px; height:16px;"
-             =borrowing_items.count
+           a.rounded-circle.dropdown-menu__menu-4
 
     - if unchecked_notifications.any?
-     i.far.fa-bell.fa-lg.pt-2.mr-1 style="font-size: 1.3em; color:#EA352D;"
+     i.far.fa-bell.fa-lg.pt-2.mr-1.header-notifications__icn-unchecked
     - else
-     i.far.fa-bell.fa-lg.pt-2.mr-1 style="font-size: 1.3em; color:#6c757d;"
+     i.far.fa-bell.fa-lg.pt-2.mr-1.header-notifications__icn-checked
     - if unchecked_notifications.any?
-       a = link_to "通知一覧",notifications_user_path(current_user.id),class:"p-1 mr-4 ",style:"color:#EA352D;",id:"通知一覧"
+       a = link_to "通知一覧",notifications_user_path(current_user.id),class:"p-1 mr-4 header-notifications__unchecked",id:"通知一覧"
     - else
-       a = link_to "通知一覧",notifications_user_path(current_user.id),class:"p-1 mr-4 text-dark",style:"color:#6c757d;",id:"通知一覧"
+       a = link_to "通知一覧",notifications_user_path(current_user.id),class:"p-1 mr-4 text-dark header-notifications__checked",id:"通知一覧"
 
     - if current_user.image?
       = link_to user_path(current_user.id)
-       img src="#{current_user.image}" width="30" height="30" class="rounded-circle"
+       img src="#{current_user.image}" class="rounded-circle header-user-img"
     - else
       = link_to user_path(current_user.id)
-       = image_tag "/assets/a.png",class:'border rounded-circle',style: 'width:30px; height:30px;'
-
+       = image_tag "/assets/a.png",class:'border rounded-circle header-user-img'
     .nav-item.dropdown
-        a.nav-link.dropdown-toggle.p-1.text-dark aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" style="color:#6c757d;" マイページ
+        a.nav-link.dropdown-toggle.p-1.text-dark.header-color aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" マイページ
         .dropdown-menu.text-center
           a.dropdown-item = link_to "プロフィール", user_path(current_user.id),class:"text-dark"
           a.dropdown-item = link_to 'ログアウト', destroy_user_session_path, method: :delete,class:"text-dark"
