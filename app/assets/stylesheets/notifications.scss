@@ -1,3 +1,16 @@
 // Place all the styles related to the notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.notifications__background {
+  width: 100%
+}
+
+.notifications__visitor-image {
+  width: 24px;
+  height: 24px;
+}
+
+.notifications__font {
+  font-weight: bold;
+}

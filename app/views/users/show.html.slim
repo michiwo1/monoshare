@@ -1,15 +1,11 @@
 =render partial: 'layouts/header',locals:{item:@item,borrowing_items:@borrowing_items,waiting_items:@waiting_items,applying_items:@applying_items,lending_items:@lending_items}
-.bg-white.mx-auto.p-5.my-5 style=("width:800px;")
+.bg-white.mx-auto.p-5.my-5.user-show__show-background
   h4.pb-5.text-center.border-bottom.font-weight-bold プロフィール
   - if @user.image?
-    img src="#{@user.image}" width="100" height="100" class="rounded-circle mb-2 mt-2"
+    img src="#{@user.image}" class="rounded-circle mb-2 mt-2 user-show__show-user-img"
   - else
-    = image_tag "/assets/a.png",class:'border rounded-circle mb-2',style: 'width:100px; height:100px;'
-
-
+    = image_tag "/assets/a.png",class:'border rounded-circle mb-2 user-show__show-user-img'
   h3.d-inline.p-3.font-weight-bold =@user.username
-
-
 
   h3.border-bottom.mt-3 自己紹介
   p.pb-5 =@user.self_introduction
@@ -19,29 +15,28 @@
   - if @user.id==current_user.id
    = link_to 'プロフィール変更', edit_user_registration_path(current_user.id),class:'button btn btn-outline-danger mr-3'
 
-
 h1.my-5.text-center = "#{@user.username}のシェア品一覧"
 
 - @user.items.each_slice(4) do |items|
  card.card-deck
     - items.each do |item|
-      .card.mb-4 style=("max-width: 21rem;")
+      .card.mb-4.users-card__card-size
        - if item.image?
          =link_to item
-           img.bd-placeholder-img.card-img-top aria-label=("Placeholder: Image cap") focusable="false" height="220px" preserveaspectratio=("xMidYMid slice") role="img" width="100%" src="#{item.image}"
+           img.bd-placeholder-img.card-img-top.users-card__card-item-img src="#{item.image}"
        - else
          =link_to item
-          = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top',style: 'width:100%; height:220px;'
+          = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top users-card__card-item-img'
        - if item.state == 2
-         h4 style="position:absolute; top:10px; left:10px"
+         h4.users-card__card-badge
           span.badge.badge-pill.badge-success 貸し出し中
        .card-body
         - if item.user.image?
           =link_to user_path
-           img src="#{item.user.image}" width="25" height="25" class="rounded-circle mb-2 mr-2"
+           img src="#{item.user.image}" class="rounded-circle mb-2 mr-2 users-card__card-user-img"
         - else
           =link_to user_path(item.user.id)
-           = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2',style: 'width:25px; height:25px;'
+           = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2 users-card__card-user-img'
         a=link_to item.tittle, item,class:'text-dark'
         .small.text-muted.text-right
           a= item.created_at.strftime('%Y/%m/%d %H:%M')

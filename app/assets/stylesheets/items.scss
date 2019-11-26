@@ -16,7 +16,7 @@
 }
 
 .items__background {
-  width:600px;
+  @extend %background
 }
 
 .item__image {

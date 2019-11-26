@@ -1,6 +1,6 @@
 
 
-.form-group.text-center.bg-white.mx-auto.my-5 style="width:800px;"
+.form-group.text-center.bg-white.mx-auto.my-5.devise__edit__background
   h4.mx-auto.py-5.border-bottom ユーザー編集
   - if notice
    p= notice
@@ -15,25 +15,25 @@
       = f.label :ユーザー名
       .badge.badge-danger.m-2 必須
       br/
-      = f.text_field :username, autofocus: true ,class: 'form-control mx-auto',style: 'width:300px;'
+      = f.text_field :username, autofocus: true ,class: 'form-control mx-auto'
     .field.my-4
       = f.label :メールアドレス
       .badge.badge-danger.m-2 必須
       br/
-      = f.email_field :email, autofocus: true, autocomplete: "email" ,class: 'form-control mx-auto',style: 'width:300px;'
+      = f.email_field :email, autofocus: true, autocomplete: "email" ,class: 'form-control mx-auto'
     .field
       = f.label :現在のパスワード
       .badge.badge-danger.m-2 必須
       br/
-      = f.password_field :current_password, autocomplete: "current-password" ,class: 'form-control mx-auto',style: 'width:300px;'
+      = f.password_field :current_password, autocomplete: "current-password" ,class: 'form-control mx-auto'
     .field.mt-4.mb-3
       = f.label :自己紹介
       br/
-      = f.text_area :self_introduction, autofocus: true, autocomplete: "self_introduction" ,class: 'form-control mx-auto',style: 'width:500px; height:150px'
+      = f.text_area :self_introduction, autofocus: true, autocomplete: "self_introduction" ,class: 'form-control mx-auto'
     .field.my-4.pb-5
       = f.label :リクエスト
       br/
-      = f.text_area :request, autofocus: true, autocomplete: "request",class: 'form-control mx-auto',style: 'width:500px; height:150px'
+      = f.text_area :request, autofocus: true, autocomplete: "request",class: 'form-control mx-auto'
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       div
         | Currently waiting confirmation for: #{resource.unconfirmed_email}
@@ -42,14 +42,14 @@
     .field
       = f.label :新しいパスワード
       br/
-      = f.password_field :password, autocomplete: "new-password",class: 'form-control mx-auto',style: 'width:300px;'
+      = f.password_field :password, autocomplete: "new-password",class: 'form-control mx-auto'
       - if @minimum_password_length
         br/
     .field.mb-4
       = f.label :新しいパスワード確認
       br/
-      = f.password_field :password_confirmation, autocomplete: "new-password" ,class: 'form-control mx-auto',style: 'width:300px;'
+      = f.password_field :password_confirmation, autocomplete: "new-password" ,class: 'form-control mx-auto'
 
     .actions
-      = f.submit "更新する" ,class: 'button btn btn-danger mt-3 mb-5',style: 'width:150px;'
-  = link_to "戻る", :back ,class: 'button btn btn-primary mt-3 mb-5',style: 'width:150px;'
+      = f.submit "更新する" ,class: 'button btn btn-danger mt-3 mb-5 devise__button'
+  = link_to "戻る", :back ,class: 'button btn btn-primary mt-3 mb-5 devise__button'

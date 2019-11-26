@@ -3,50 +3,50 @@
 - visited = notification.visited
 
 
-.col-md-9.mx-auto style=("width:100%")
+.col-md-9.mx-auto.notifications__background
   .form-inline
     span
       - if visitor.image?
         = link_to user_path(visitor) do
-          img src="#{visitor.image}" width="24" height="24" class="rounded-circle mr-1 "
+          img src="#{visitor.image}" class="rounded-circle mr-1 notifications__visitor-image"
           strong
             = visitor.username
       - else
         = link_to user_path(visitor) do
-          = image_tag "/assets/a.png",class:'border  rounded-circle mr-1',style: 'width:24px; height:24px;'
+          = image_tag "/assets/a.png",class:'border rounded-circle mr-1 notifications__visitor-image'
           strong
             = visitor.username
 
       = 'さんが'
       - case notification.action
       - when 'apply' then
-        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, style: "font-weight: bold;"
+        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, class:"notifications__font"
         = "に"
-        = link_to "申請",waiting_user_path(current_user.id), style: "font-weight: bold;"
+        = link_to "申請",waiting_user_path(current_user.id), class:"notifications__font"
         ="しました"
       - when 'cancel' then
-        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, style: "font-weight: bold;"
+        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, class:"notifications__font"
         = "の申請をキャンセルしました"
       - when 'approve' then
-        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, style: "font-weight: bold;"
+        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, class:"notifications__font"
         = "が"
-        = link_to "承認",borrowing_user_path(current_user.id), style: "font-weight: bold;"
+        = link_to "承認",borrowing_user_path(current_user.id), class:"notifications__font"
         ="されました"
       - when 'reject' then
-        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, style: "font-weight: bold;"
+        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, class:"notifications__font"
         = "承認"
         ="が"
-        = link_to "拒否",applying_user_path(current_user.id), style: "font-weight: bold;"
+        = link_to "拒否",applying_user_path(current_user.id), class:"notifications__font"
         ="されました"
       - when 'complete' then
-        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, style: "font-weight: bold;"
+        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, class:"notifications__font"
         = "の返却を確認しました"
       - when 'favorite' then
-        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, style: "font-weight: bold;"
+        = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, class:"notifications__font"
         = "にいいねしました"
       - when 'comment' then
             - if notification.item.user_id == visited.id
-              = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, style: "font-weight: bold;"
+              = link_to "あなたの投稿「#{notification.item.tittle}」", notification.item, class:"notifications__font"
               = "コメントしました"
             - else
               span

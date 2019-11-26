@@ -1,0 +1,27 @@
+.devise__edit__background {
+  width:800px;
+}
+
+.devise__button {
+  width:150px;
+}
+
+input[type=text] {
+  width:300px;
+}
+
+input[type=email] {
+  width:300px;
+}
+
+input[type=password] {
+  width:300px;
+}
+
+textarea {
+  resize: auto;
+  max-width: 500px;
+  max-height: 600px;
+  min-width: 100px;
+  min-height: 150px;
+}

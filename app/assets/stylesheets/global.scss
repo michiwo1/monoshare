@@ -8,6 +8,18 @@
   height: 50px;
 }
 
+%background {
+  width:600px;
+}
+
+%like-icon {
+  color:#EA352D;
+}
+
+%unlike-icon {
+  color:#6c757d;
+}
+
 %badge {
   font-size: 10%;
 }
@@ -28,8 +40,8 @@
 }
 
 %card-user-img {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
 }
 
 %card-item-user-img {

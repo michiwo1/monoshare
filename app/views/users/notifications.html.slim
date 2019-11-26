@@ -2,7 +2,7 @@
 
 - notifications = @notifications.where.not(visitor_id: current_user.id)
 
-.bg-white.mx-auto.my-5 style=("width:800px;")
+.bg-white.mx-auto.my-5.users-notifications-background
   h4.py-5.text-center.border-bottom.font-weight-bold 通知一覧
   - if notifications.exists?
     = render notifications
