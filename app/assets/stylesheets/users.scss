@@ -52,6 +52,10 @@
   }
 }
 
+.users__badge {
+  @extend %badge-danger;
+}
+
 .users-notifications-background {
   width:800px;
 }

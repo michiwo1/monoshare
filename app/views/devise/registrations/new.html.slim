@@ -10,28 +10,30 @@ header.text-center.my-5
   h4.mx-auto.py-5.border-bottom 新規ユーザー登録
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = devise_error_messages
-
     .field.mt-5
       = f.label :ユーザー名
-      .badge.badge-danger.m-2 必須
+      .devise__badge
+        .badge.badge-danger.m-2 必須
       br/
       = f.text_field :username, autofocus: true,autocomplete: "username",class: 'form-control mx-auto'
-    .field.my-4
+    .field.my-5
       = f.label :メールアドレス
-      .badge.badge-danger.m-2 必須
+      .devise__badge
+        .badge.badge-danger.m-2  必須
       br/
       = f.email_field :email, autofocus: true, autocomplete: "email",class: 'form-control mx-auto'
-    .field.my-4
+    .field.my-5
       = f.label :パスワード
       - if @minimum_password_length
-
           | (#{@minimum_password_length} 文字以上)
-      .badge.badge-danger.m-2 必須
+      .devise__badge
+       .badge.badge-danger.m-2 必須
       br/
       = f.password_field :password, autocomplete: "new-password",class: 'form-control mx-auto'
-    .field.my-4
+    .field.my-5
       = f.label :パスワード確認
-      .badge.badge-danger.m-2 必須
+      .devise__badge
+       .badge.badge-danger.m-2 必須
       br/
       = f.password_field :password_confirmation, autocomplete: "new-password",class: 'form-control mx-auto'
     .actions

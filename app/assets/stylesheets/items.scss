@@ -11,6 +11,10 @@
   @extend %notice__alert;
 }
 
+.items__badge {
+  @extend %badge-danger;
+}
+
 .items__title {
   color:#6c757d;
 }

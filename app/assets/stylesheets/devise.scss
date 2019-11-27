@@ -1,30 +1,38 @@
 .devise__edit__background {
-  width:800px;
+  width: 800px;
 }
 
 .devise__sign__background {
-  width:600px;
+  width: 600px;
 }
 
 .devise__button {
-  width:150px;
+  width: 150px;
 }
 
 .devise__logo {
-  width:50px;
-  height:50px;
+  width: 50px;
+  height: 50px;
+}
+
+.devise__check_box {
+  padding: 3px;
+}
+
+.devise__badge {
+  @extend %badge-danger;
 }
 
 input[type=text] {
-  width:300px;
+  width: 300px;
 }
 
 input[type=email] {
-  width:300px;
+  width: 300px;
 }
 
 input[type=password] {
-  width:300px;
+  width: 300px;
 }
 
 textarea {

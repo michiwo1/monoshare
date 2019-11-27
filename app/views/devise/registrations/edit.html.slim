@@ -13,17 +13,20 @@
     = f.file_field :image ,class:'p-5 border rounded'
     .field.my-4
       = f.label :ユーザー名
-      .badge.badge-danger.m-2 必須
+      .devise__badge
+       .badge.badge-danger.m-2 必須
       br/
       = f.text_field :username, autofocus: true ,class: 'form-control mx-auto'
     .field.my-4
       = f.label :メールアドレス
-      .badge.badge-danger.m-2 必須
+      .devise__badge
+        .badge.badge-danger.m-2 必須
       br/
       = f.email_field :email, autofocus: true, autocomplete: "email" ,class: 'form-control mx-auto'
     .field
       = f.label :現在のパスワード
-      .badge.badge-danger.m-2 必須
+      .devise__badge
+        .badge.badge-danger.m-2 必須
       br/
       = f.password_field :current_password, autocomplete: "current-password" ,class: 'form-control mx-auto'
     .field.mt-4.mb-3

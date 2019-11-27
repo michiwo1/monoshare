@@ -12,14 +12,14 @@ header.text-center.my-5
       = f.label :メールアドレス
       br/
       = f.email_field :email, autofocus: true, autocomplete: "email",class: 'form-control mx-auto'
-    .field.my-4
+    .field.my-5
       = f.label :パスワード
       br/
       = f.password_field :password, autocomplete: "current-password",class: 'form-control mx-auto'
     - if devise_mapping.rememberable?
       .field.my-4
         = f.check_box :remember_me
-        = f.label :ログインしたままにする
+        = f.label :ログインしたままにする,class:'devise__check_box'
     .actions
       = f.submit "ログイン",class: 'button btn btn-danger mt-3 mb-5 devise__button'
 
