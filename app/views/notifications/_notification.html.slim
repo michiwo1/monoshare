@@ -55,8 +55,8 @@
                     = "自身の投稿"
                 ="にコメントしました"
 
-            p.text-muted.mb-0
-              = Comment.find_by(id: notification.comment_id)&.content
+            p.text-muted.mb-0.notifications__comments
+              = simple_format Comment.find_by(id: notification.comment_id)&.content,class:"notifications__comments"
   .small.text-muted.text-right
     = time_ago_in_words(notification.created_at).upcase
   hr

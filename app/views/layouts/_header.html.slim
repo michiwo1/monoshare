@@ -51,7 +51,7 @@ headr
          = link_to '借りている物一覧', borrowing_user_path(current_user.id),class:"text-dark"
          -if borrowing_items.count != 0
            a.rounded-circle.dropdown-menu__menu-4
-
+            =borrowing_items.count
     - if unchecked_notifications.any?
      i.far.fa-bell.fa-lg.pt-2.mr-1.header-notifications__icn-unchecked
     - else

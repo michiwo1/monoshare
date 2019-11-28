@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .notifications__background {
-  width: 100%
+  width: 600px;
 }
 
 .notifications__visitor-image {
@@ -13,4 +13,8 @@
 
 .notifications__font {
   font-weight: bold;
+}
+
+.notifications__comments {
+  @extend %word-wrap-style
 }

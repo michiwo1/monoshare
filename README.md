@@ -1,24 +1,41 @@
-# README
+MONOシェア
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+シェアハウス内での物のシェアサービス
 
-Things you may want to cover:
+* アプリケーションの概要
 
-* Ruby version
+誰のために:
+ ・シェアハウス内の人たち
+ ・これからシェアハウス内に引越しをしてくる人たち
 
-* System dependencies
+どんな悩みをどう解決するか:
+ 例)平日に自転車で移動したいが自転車を持っていない人の悩み 　
+ ⇨休日しか自転車を使わない人が平日の間自転車をシェアすることで解決することができる
+ 例)シェアハウスに引越しをする際にものがたくさん持って行かないといけない人の悩み
+ ⇨シェアを利用して引越しの負担を軽減することができる
 
-* Configuration
+* アプリケーション内で使用している技術一覧
 
-* Database creation
+実装機能:
+・ユーザー登録機能
+・ログイン・ログアウト機能
+・ログイン状態維持機能
+・プロフィール編集機能
+・ユーザー詳細機能
+・記事投稿・編集・削除機能
+・画像アップロード機能・編集・削除機能
+・ページネーション機能
+・検索機能
+・申請承認機能
+・コメント機能
+・通知機能
+・いいね機能
 
-* Database initialization
+* アプリケーション内で使用している技術一覧
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+データベース
+postgresql
+テスト
+Rspec model /feature
+画像アップロードライブラリ
+aws S3
