@@ -56,6 +56,10 @@
   @extend %badge-danger;
 }
 
+.users__word-wrap {
+  @extend %word-wrap-style
+}
+
 .users-notifications-background {
   width:800px;
 }

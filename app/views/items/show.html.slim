@@ -12,7 +12,8 @@
    a.mx-1= @item.share_start_date.strftime('%Y年%m月%d日')
    a 〜
    a.mx-1= @item.share_end_date.strftime('%Y年%m月%d日')
-  p.p-4.mx-5.text-left= @item.content
+  p.p-4.mx-5.text-left= simple_format @item.content,class:"items__comments"
+  
 
 
   .text-center
@@ -64,7 +65,7 @@
        a=link_to user_path(c.user.id)
          = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2 items-comments__comments-user-imag'
      a.font-weight-bold= c.user.username
-     p= c.content
+     p= simple_format c.content,class:"items__comments"
      - if current_user == c.user
       = link_to "削除", item_comments_path(@comment.item_id, @comment.id), method: :delete,class:"badge badge-danger mb-1"
      hr class="my-0"
