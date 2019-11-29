@@ -15,7 +15,7 @@ h2.pb-4.pt-3.d-flex.justify-content-center.bg-white.items__title  シェア一�
          .card.mb-4.items-card__card-size
           - if item.image?
             =link_to item
-              img.bd-placeholder-img.card-img-top.items-card__card-item-img src="#{item.image}"
+              = image_tag item.image.url,class:"bd-placeholder-img card-img-top items-card__card-item-img"
           - else
              =link_to item
               = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top items-card__card-item-img'

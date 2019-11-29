@@ -9,9 +9,11 @@
     =alert
 
   = form_with model:@item,local:true do |f|
-    = f.label "画像をアップロード" ,class:"pt-3"
+    = image_tag @item.image.url,class:' rounded shadow mx-auto item__image' if @item.image.present?
+    = f.label "画像をアップロード" ,class:"pt-4 d-block"
     br/
     = f.file_field :image,class:"border rounded p-5 "
+    = f.hidden_field :image_cache
     .form-group.mt-5
       =f.label :シェア品名
       .items__badge
@@ -30,4 +32,4 @@
         .badge.badge-danger 必須
       .form-inline.d-flex.justify-content-center.m-2
         = date_field_tag 'item[share_end_date]','',class: 'form-control',id: 'task_share_end_date'
-    =f.submit nil,class: 'btn btn-danger mt-3 mb-5 items-form__form-submit'
+    =f.submit nil,class: 'btn btn-danger mt-3 mb-5 item__submit'

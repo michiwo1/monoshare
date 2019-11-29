@@ -18,17 +18,20 @@
     = f.file_field :image,class:"border rounded p-5 "
     .form-group.mt-5
       a.mr-1 シェア品名
-      .badge.badge-danger.pb-1 必須
-      =f.text_field :tittle,class: 'form-control mx-auto',id: 'task_tittle',id: 'task_tittle'
+      .items__badge
+        .badge.badge-danger 必須
+      =f.text_field :tittle,class: 'form-control mx-auto m-2',id: 'task_tittle',id: 'task_tittle'
     .form-group.my-5
       =f.label :商品説明
       =f.text_area :content,row:5, class: 'form-control mx-auto mb-4',id: 'task_content item__textarea'
       a.mr-1 シェア開始日
-      .badge.badge-danger 必須
-      .form-inline.d-flex.justify-content-center.m-2
+      .items__badge
+       .badge.badge-danger 必須
+       .form-inline.d-flex.justify-content-center.m-2
         = date_field_tag 'item[share_start_date]', nil,class: 'form-control',id: 'task_share_start_date'
       a.mr-1 シェア終了日
-      .badge.badge-danger 必須
+      .items__badge
+       .badge.badge-danger 必須
       .form-inline.d-flex.justify-content-center.m-2
         = date_field_tag 'item[share_end_date]', nil,class: 'form-control ',id: 'task_share_end_date'
     =f.submit nil,class: 'btn btn-primary mt-3 mb-5 item__submit'
