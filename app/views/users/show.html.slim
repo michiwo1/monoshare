@@ -8,10 +8,10 @@
   h3.d-inline.p-3.font-weight-bold =@user.username
 
   h3.border-bottom.mt-3 自己紹介
-  p = simple_format @user.self_introduction,class:"users__word-wrap"
+  p.pb-3 = simple_format @user.self_introduction,class:"users__word-wrap"
 
   h3.border-bottom シェア品のリクエスト
-  p = simple_format @user.request,class:"users__word-wrap"
+  p.pb-3 = simple_format @user.request,class:"users__word-wrap users__from"
   - if @user.id==current_user.id
    = link_to 'プロフィール変更', edit_user_registration_path(current_user.id),class:'button btn btn-outline-danger mr-3'
 

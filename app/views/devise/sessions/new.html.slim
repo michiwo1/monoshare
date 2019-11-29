@@ -1,4 +1,5 @@
 header.text-center.my-5
+
  = link_to "/"
   = image_tag "/assets/logo.png",class:'rounded-circle mb-3 devise__logo'
   a.navbar-brand.font-weight-bold.text-dark href="/" MONOシェア
@@ -8,6 +9,11 @@ header.text-center.my-5
   h4.mx-auto.py-4.border-bottom ログイン
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     = devise_error_messages
+    h5 サンプルアカウント
+    p メールアドレス
+    p test@test
+    p パスワード
+    p 123456
     .field.mt-5
       = f.label :メールアドレス
       br/
