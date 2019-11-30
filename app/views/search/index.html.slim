@@ -1,5 +1,5 @@
 =render partial: 'layouts/header',locals:{item:@item,borrowing_items:@borrowing_items,waiting_items:@waiting_items,applying_items:@applying_items,lending_items:@lending_items}
-=render partial: 'partial/carousel'
+h1.mb-5.p-3 検索結果
 
 - if notice
  .alert.alert-secondary.text-center.mx-auto.font-weight-bold.mt-3.items__notice role="notice"
@@ -7,7 +7,7 @@
 -if alert
  .alert.alert-secondary.text-center.mx-auto.font-weight-bold.mt-3.alert__style.items__alert role="notice"
   =alert
-h2.pb-4.pt-3.d-flex.justify-content-center.bg-white.items__title  シェア一覧
+
 
 - @searchs.each_slice(4) do |items|
  card.card-deck.items-card
@@ -46,6 +46,3 @@ h2.pb-4.pt-3.d-flex.justify-content-center.bg-white.items__title  シェア一�
                    a.pl-1= item.favorites.count
              .small.text-muted.text-right
                a= item.created_at.strftime('%Y/%m/%d %H:%M')
-
-
-= paginate @items

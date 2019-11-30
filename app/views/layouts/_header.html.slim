@@ -4,7 +4,7 @@ headr
   = link_to "/"
    = image_tag "/assets/logo.png",class:'rounded-circle mb-2 header__logo'
    a.navbar-brand.font-weight-bold href="/" MONOシェア
-  = search_form_for @search, url: items_path do |f|
+  = search_form_for @search, url: search_index_path do |f|
     .form-inline
      = f.text_field :tittle_cont, class: "form-control mr-sm-2", placeholder: '何かお探しですか？'
      = f.submit '検索',class:'button btn btn-outline-success'
