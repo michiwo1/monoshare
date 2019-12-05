@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
-  get 'search/index'
+
   root'items#index'
 
   devise_for :users
 
-  resources :notifications, only: :index
   resources :search, only: :index
-  
+  resources :notifications, only: :index
+
+
   resources :users do
     get :applying, on: :member
     get :waiting, on: :member
@@ -27,4 +28,5 @@ Rails.application.routes.draw do
     resource :comments, only: [:create,:destroy]
   end
 
+  get '(*unmatched_route)' => redirect('/')
 end

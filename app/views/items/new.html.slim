@@ -26,10 +26,10 @@
       .items__badge
         .badge.badge-danger 必須
       .form-inline.d-flex.justify-content-center.m-2
-        = date_field_tag 'item[share_start_date]', nil,class: 'form-control',type:"date",id: 'task_share_start_date'
+        = f.date_field 'share_start_date',class: 'form-control',type:"date",id: 'task_share_start_date'
       a.mr-1 シェア終了日
       .items__badge
         .badge.badge-danger 必須
       .form-inline.d-flex.justify-content-center.m-2
-        = date_field_tag 'item[share_end_date]','',class: 'form-control',id: 'task_share_end_date'
+        = f.date_field 'share_end_date',class: 'form-control',id: 'task_share_end_date'
     =f.submit nil,class: 'btn btn-danger mt-3 mb-5 item__submit'

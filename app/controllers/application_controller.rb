@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :set_search
   before_action :set_items,if: :user_signed_in?
 
+  
+
   def set_search
    @items = Item.where(state:nil)
    @search = @items.ransack(params[:q])

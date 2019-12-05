@@ -12,8 +12,6 @@
   height:30px;
 }
 
-
-
 .header-notifications {
 
   &__icn-unchecked {
@@ -36,7 +34,7 @@
 
 }
 
-.dropdown-menu {
+.nav-item a.dropdown-menu {
 
   &__menu-1 {
     @extend %dropdown-menu;
