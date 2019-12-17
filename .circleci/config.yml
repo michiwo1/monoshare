@@ -1,0 +1,56 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/circleci-demo-ruby-rails
+
+    # すべてのコマンドの実行を担うプライマリコンテナイメージ
+
+    docker:
+      - image: circleci/ruby:2.4.1-node
+        environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
+
+    # 「host: localhost」でアクセスできるサービスコンテナイメージ
+
+      - image: circleci/postgres:9.6.2-alpine
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle-test_test
+
+    steps:
+      - checkout
+
+      # bundle キャッシュをリストアする
+      - restore_cache:
+          keys:
+            - rails-demo-{{ checksum "Gemfile.lock" }}
+            - rails-demo-
+
+      # bundle install で依存関係をインストールする
+      - run:
+          name: Install dependencies
+          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
+
+      - run: sudo apt install -y postgresql-client || true
+
+      # bundle キャッシュを保存する
+      - save_cache:
+          key: rails-demo-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      - run:
+          name: Database Setup
+          command: |
+            bundle exec rake db:create
+            bundle exec rake db:structure:load
+
+      - run:
+          name: Parallel RSpec
+          command: bin/rails test
+
+      # artifacts を保存する
+      - store_test_results:
+          path: /tmp/test-results
