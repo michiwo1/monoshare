@@ -16,7 +16,7 @@ RSpec.describe Item, type: :model do
   it "itemのタイトル、本文、外部キー（user_id）があれば有効" do
     user = @user
     item = user.items.build(tittle:"にんじん",content:"たこ焼き")
-    expect(item).to be_valid
+    expect(user).to be_valid
   end
 
 
