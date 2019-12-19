@@ -64,7 +64,7 @@ RSpec.describe 'リンクテスト', type: :feature do
     fill_in 'user_password', with: @user.password
     click_on 'ログイン'
     click_on "ログアウト"
-    expect(page).to have_selector 'h4', text: 'ログイン'
+    expect(page).to have_link  'ログイン'
   end
 
   it "申請中一覧リンクテスト" do
@@ -94,13 +94,13 @@ RSpec.describe 'リンクテスト', type: :feature do
     expect(page).to have_selector 'h1', text: '貸し出し中一覧'
   end
 
-  it "借りているもの一覧リンクテスト" do
+  it "借りている物一覧リンクテスト" do
     visit new_user_session_path
     fill_in 'user_email', with: @user.email
     fill_in 'user_password', with: @user.password
     click_on 'ログイン'
-    click_on "借りているもの一覧"
-    expect(page).to have_selector 'h1', text: '借りているもの一覧'
+    click_on "借りている物一覧"
+    expect(page).to have_selector 'h1', text: '借りている物一覧'
   end
 
   it "シェアするリンクテスト" do

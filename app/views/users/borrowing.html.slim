@@ -1,5 +1,5 @@
 =render partial: 'layouts/header',locals:{item:@item,borrowing_items:@borrowing_items,waiting_items:@waiting_items,applying_items:@applying_items,lending_items:@lending_items}
-h1.mb-5.p-3  借りているもの一覧
+h1.mb-5.p-3  借りている物一覧
 
 
 - @borrowing_items.each_slice(4) do |items|

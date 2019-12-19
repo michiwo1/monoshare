@@ -32,10 +32,5 @@ RSpec.describe User, type: :model do
     expect(user.save).to be_falsey
   end
 
-  #dependent: :destroyが実装されているか
-  it 'dependent: :destroyが実装されているか' do
-    user = User.create(username: 'Tom', email: 'tom@example.com',password:123456)
-    user.items.create(tittle: 'RSpec必勝法', content: 'あとで書く')
-    expect{ user.destroy }.to change{ Item.count }.by(-1)
-  end
+
 end
