@@ -6,7 +6,7 @@
     - if @item.image?
      = image_tag @item.image.url,class:'my-3 rounded shadow mx-auto item__image'
     - else
-     = image_tag "/assets/k.png",class:'rounded shadow mx-auto item__image'
+     = image_tag "/images/k.png",class:'rounded shadow mx-auto item__image'
   .text-center.mt-3
    .badge.badge-success.mr-1 シェア期間
    a.mx-1= @item.share_start_date.strftime('%Y年%m月%d日')
@@ -33,7 +33,7 @@
      img src="#{@item.user.image}" class="rounded-circle mb-2 mr-2 item__user__img"
   - else
     a=link_to user_path(@item.user.id)
-      = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2 item__user__img'
+      = image_tag "/images/a.png",class:'border rounded-circle mb-2 mr-2 item__user__img'
   h5.d-inline.mr-4= link_to @item.user.username, "/users/#{@item.user_id}" ,class:'text-dark'
 
   - if user_signed_in?
@@ -63,7 +63,7 @@
         img src="#{c.user.image}" class="rounded-circle mb-2 mr-2 items-comments__comments-user-imag"
      - else
        a=link_to user_path(c.user.id)
-         = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2 items-comments__comments-user-imag'
+         = image_tag "/images/a.png",class:'border rounded-circle mb-2 mr-2 items-comments__comments-user-imag'
      a.font-weight-bold= c.user.username
      p= simple_format c.content,class:"items__comments"
      - if current_user == c.user

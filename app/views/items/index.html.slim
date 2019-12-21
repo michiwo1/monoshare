@@ -18,14 +18,14 @@ h2.pb-4.pt-3.d-flex.justify-content-center.bg-white.items__title  シェア一�
               = image_tag item.image.url,class:"bd-placeholder-img card-img-top items-card__card-item-img"
           - else
              =link_to item
-              = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top items-card__card-item-img'
+              = image_tag "/images/k.png",class:'bd-placeholder-img card-img-top items-card__card-item-img'
           .card-body
              - if item.user.image?
                =link_to user_path(item.user.id)
                 img src="#{item.user.image}" class="rounded-circle mb-2 mr-2 items-card__card-user-img"
              - else
                =link_to user_path(item.user.id)
-                = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2 items-card__card-user-img'
+                = image_tag "/images/a.png",class:'border rounded-circle mb-2 mr-2 items-card__card-user-img'
 
              a=link_to item.tittle, item,class:'text-dark text-center'
              - if user_signed_in?

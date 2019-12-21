@@ -13,7 +13,7 @@ h1.mb-5.p-3  借りている物一覧
              span.badge.badge-pill.badge-success 借りている
        - else
          =link_to item
-          = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top users-card__card-item-img'
+          = image_tag "/images/k.png",class:'bd-placeholder-img card-img-top users-card__card-item-img'
           h4.users-card__card-badge
            span.badge.badge-pill.badge-success 借りている
        .card-body
@@ -22,7 +22,7 @@ h1.mb-5.p-3  借りている物一覧
              img src="#{item.user.image}" class="rounded-circle mb-2 mr-2 users-card__card-user-img"
          - else
              =link_to user_path(item.user.id)
-              = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2 users-card__card-user-img'
+              = image_tag "/images/a.png",class:'border rounded-circle mb-2 mr-2 users-card__card-user-img'
          h5.d-inline =link_to item.tittle, item,class:'text-dark'
          hr
          p = link_to "#{item.user.username}さんから借りています。",item.user,class:'ml-4 text-dark'
@@ -31,9 +31,9 @@ h1.mb-5.p-3  借りている物一覧
            =link_to item.user
              img src="#{item.user.image}" class="rounded-circle mb-2 mr-2 users-card__card-item-user-img"
           - else
-            = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2 users-card__card-item-user-img'
+            = image_tag "/images/a.png",class:'border rounded-circle mb-2 mr-2 users-card__card-item-user-img'
           a = "⇨"
           - if item.user.image?
            img src="#{item.rentals.last.user.image}" class="rounded-circle mb-2 mx-2 users-card__card-item-user-img"
           - else
-            = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2 users-card__card-item-user-img'
+            = image_tag "/images/a.png",class:'border rounded-circle mb-2 mr-2 users-card__card-item-user-img'

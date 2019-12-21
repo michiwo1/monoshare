@@ -4,7 +4,7 @@
   - if @user.image?
     img src="#{@user.image}" class="rounded-circle mb-2 mt-2 user-show__show-user-img"
   - else
-    = image_tag "/assets/a.png",class:'border rounded-circle mb-2 user-show__show-user-img'
+    = image_tag "/images/a.png",class:'border rounded-circle mb-2 user-show__show-user-img'
   h3.d-inline.p-3.font-weight-bold =@user.username
 
   h3.border-bottom.mt-3 自己紹介
@@ -26,7 +26,7 @@ h1.my-5.text-center = "#{@user.username}のシェア品一覧"
            img.bd-placeholder-img.card-img-top.users-card__card-item-img src="#{item.image}"
        - else
          =link_to item
-          = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top users-card__card-item-img'
+          = image_tag "/images/k.png",class:'bd-placeholder-img card-img-top users-card__card-item-img'
        - if item.state == 2
          h4.users-card__card-badge
           span.badge.badge-pill.badge-success 貸し出し中
@@ -36,7 +36,7 @@ h1.my-5.text-center = "#{@user.username}のシェア品一覧"
            img src="#{item.user.image}" class="rounded-circle mb-2 mr-2 users-card__card-user-img"
         - else
           =link_to user_path(item.user.id)
-           = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2 users-card__card-user-img'
+           = image_tag "/images/a.png",class:'border rounded-circle mb-2 mr-2 users-card__card-user-img'
         a=link_to item.tittle, item,class:'text-dark'
         .small.text-muted.text-right
           a= item.created_at.strftime('%Y/%m/%d %H:%M')
