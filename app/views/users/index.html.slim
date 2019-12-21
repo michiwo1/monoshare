@@ -13,6 +13,6 @@
             img src="#{user.image}" class="rounded-circle mb-2 mr-2 users-img"
          - else
            =link_to user_path(user.id)
-            = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2 users-img'
+            = image_tag "/images/a.png",class:'border rounded-circle mb-2 mr-2 users-img'
          = link_to user.username, user,class:'text-dark font-weight-bold'
          p =user.self_introduction

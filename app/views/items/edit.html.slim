@@ -10,7 +10,7 @@
   - if @item.image?
    = image_tag @item.image.url,class: 'item__image'
   - else
-    = image_tag "/assets/k.png",class:'item__image'
+    = image_tag "/images/k.png",class:'item__image'
 
   = form_with model:@item,local:true do |f|
     = f.label "画像を変更",class:"pt-3"

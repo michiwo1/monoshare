@@ -10,13 +10,13 @@
                text dy=".3em" fill="#dee2e6" x="50%" y="50%"
           - else
              =link_to item
-              = image_tag "/assets/k.png",class:'bd-placeholder-img card-img-top',style: 'width:100%; height:220px;'
+              = image_tag "/images/k.png",class:'bd-placeholder-img card-img-top',style: 'width:100%; height:220px;'
           .card-body
              - if item.user.image?
                =link_to user_path(item.user.id)
                 img src="#{item.user.image}" width="35" height="35" class="rounded-circle mb-2 mr-2"
              - else
                =link_to user_path(item.user.id)
-                = image_tag "/assets/a.png",class:'border rounded-circle mb-2 mr-2',style: 'width:35px; height:35px;'
+                = image_tag "/images/a.png",class:'border rounded-circle mb-2 mr-2',style: 'width:35px; height:35px;'
 
              a.inline-block=link_to item.tittle, item,class:'text-dark text-center'
