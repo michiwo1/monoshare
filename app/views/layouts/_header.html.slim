@@ -2,7 +2,7 @@ headr
 .shadow.pt-2.pb-3.px-3.mb-0.bg-white.rounded
  nav.navbar.navbar-light.bg-white.d-flex.justify-content-center
   = link_to "/"
-   = image_tag "/assets/logo.png",class:'rounded-circle mb-2 header__logo'
+   = image_tag "/images/logo.png",class:'rounded-circle mb-2 header__logo'
    a.navbar-brand.font-weight-bold href="/" MONOシェア
   = search_form_for @search, url: search_index_path do |f|
     .form-inline
@@ -66,7 +66,7 @@ headr
        img src="#{current_user.image}" class="rounded-circle header-user-img"
     - else
       = link_to user_path(current_user.id)
-       = image_tag "/assets/a.png",class:'border rounded-circle header-user-img'
+       = image_tag "/images/a.png",class:'border rounded-circle header-user-img'
     .nav-item.dropdown
         a.nav-link.dropdown-toggle.p-1.text-dark.header-color aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" マイページ
         .dropdown-menu.text-center
