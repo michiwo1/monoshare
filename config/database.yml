@@ -22,7 +22,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: postgres # 設定したPostgreSQL Accountと同一のもの
   password:
-  host: db
+  host: localhost
 
 development:
   <<: *default
