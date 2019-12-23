@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 2019_11_08_082650) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-    t.integer "likes_count"
     t.date "share_start_date"
     t.date "share_end_date"
   end
@@ -58,29 +57,6 @@ ActiveRecord::Schema.define(version: 2019_11_08_082650) do
     t.index ["item_id"], name: "index_notifications_on_item_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.string "image"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "relationship_request_approvals", force: :cascade do |t|
-    t.bigint "item_id"
-    t.bigint "follow_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["follow_id"], name: "index_relationship_request_approvals_on_follow_id"
-    t.index ["item_id", "follow_id"], name: "index_relationship_request_approvals_on_item_id_and_follow_id", unique: true
-    t.index ["item_id"], name: "index_relationship_request_approvals_on_item_id"
-  end
-
-  create_table "relationships", force: :cascade do |t|
-    t.integer "following_id"
-    t.integer "follower_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "rentals", force: :cascade do |t|
@@ -111,6 +87,4 @@ ActiveRecord::Schema.define(version: 2019_11_08_082650) do
 
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
-  add_foreign_key "relationship_request_approvals", "items"
-  add_foreign_key "relationship_request_approvals", "items", column: "follow_id"
 end
