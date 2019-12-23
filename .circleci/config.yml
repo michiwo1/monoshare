@@ -13,7 +13,7 @@ jobs: # a collection of steps
           RAILS_ENV: test
       - image: circleci/postgres:11.5-alpine # database image
         environment: # environment variables for database
-          POSTGRES_USER: circleci-demo-ruby
+          POSTGRES_USER: postgres
           POSTGRES_DB: monoshare_test
           POSTGRES_PASSWORD: ""
     steps: # a collection of executable commands
