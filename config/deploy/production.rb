@@ -8,7 +8,7 @@
 # server "db.example.com", user: "deploy", roles: %w{db}
 
 # EC2サーバーのIP、EC2サーバーにログインするユーザー名、サーバーのロールを記述
-server '18.177.93.205'
+server '18.177.93.205',
   user: 'michiwo1',
   roles: %w{app db app},
   ssh_options: {
