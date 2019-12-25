@@ -8,10 +8,15 @@
 # server "db.example.com", user: "deploy", roles: %w{db}
 
 # EC2サーバーのIP、EC2サーバーにログインするユーザー名、サーバーのロールを記述
-server '18.177.93.205', user: 'michiwo1', roles: %w{app db web}
-
-#デプロイするサーバーにsshログインする鍵の情報を記述
-set :ssh_options, keys: '~/.ssh/monoshare_aws_rsa'
+server '18.177.93.205'
+  user: 'michiwo1',
+  roles: %w{app db app},
+  ssh_options: {
+      port: 22,
+      user: 'michiwo1',
+      keys: %w(~/.ssh/monoshare.pem),
+      forward_agent: true
+  }
 
 # role-based syntax
 # ==================
@@ -24,6 +29,7 @@ set :ssh_options, keys: '~/.ssh/monoshare_aws_rsa'
 # role :app, %w{deploy@example.com}, my_property: :my_value
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
+
 
 
 
