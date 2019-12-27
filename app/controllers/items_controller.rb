@@ -51,7 +51,6 @@ class ItemsController < ApplicationController
    if @item.save
     redirect_to items_url,notice:"「#{@item.tittle}」をシェアしました"
    else
-    Rails::logger::debug(@item.errors.messages)
     @item = Item.new(item_params)
     flash[:alert] = "シェア品名を入力してください"
     render :new
