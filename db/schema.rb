@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_08_082650) do
+ActiveRecord::Schema.define(version: 2019_12_27_120705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -42,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_082650) do
     t.integer "user_id"
     t.date "share_start_date"
     t.date "share_end_date"
+    t.integer "category_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -57,6 +64,29 @@ ActiveRecord::Schema.define(version: 2019_11_08_082650) do
     t.index ["item_id"], name: "index_notifications_on_item_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "relationship_request_approvals", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "follow_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["follow_id"], name: "index_relationship_request_approvals_on_follow_id"
+    t.index ["item_id", "follow_id"], name: "index_relationship_request_approvals_on_item_id_and_follow_id", unique: true
+    t.index ["item_id"], name: "index_relationship_request_approvals_on_item_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "following_id"
+    t.integer "follower_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "rentals", force: :cascade do |t|

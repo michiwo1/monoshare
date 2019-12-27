@@ -22,6 +22,8 @@
     .form-group.my-5
       =f.label :商品説明
       =f.text_area :content,class: 'form-control mx-auto mb-4',id: 'task_content'
+      =f.select :category_id, [["家電",0],["本",1],["日用品",2],["衣類",3],["ゲーム",4],["文房具",5],["乗り物",6],["ヘルスケア",7],["ビューティー",8]], class: 'form-control', :prompt => "カテゴリを選択"
+      br
       a.mr-1 シェア開始日
       .items__badge
         .badge.badge-danger 必須

@@ -51,6 +51,7 @@ class ItemsController < ApplicationController
    if @item.save
     redirect_to items_url,notice:"「#{@item.tittle}」をシェアしました"
    else
+    Rails::logger::debug(@item.errors.messages)
     @item = Item.new(item_params)
     flash[:alert] = "シェア品名を入力してください"
     render :new
@@ -168,7 +169,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:tittle,:content,:image,:image_cache,:state,:share_start_date, :share_end_date)
+    params.require(:item).permit(:tittle,:content,:image,:image_cache,:state,:share_start_date, :share_end_date, :category_id)
   end
 
 

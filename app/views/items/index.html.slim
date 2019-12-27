@@ -12,6 +12,8 @@ h2.pb-4.pt-3.d-flex.justify-content-center.bg-white.items__title  シェア一�
 - @searchs.each_slice(4) do |items|
  card.card-deck.items-card
    - items.each do |item|
+    =item.select :category_id, [["家電",0],["本",1],["日用品",2],["衣類",3],["ゲーム",4],["文房具",5],["乗り物",6],["ヘルスケア",7],["ビューティー",8]], class: 'form-control'
+      br
          .card.mb-4.items-card__card-size
           - if item.image?
             =link_to item

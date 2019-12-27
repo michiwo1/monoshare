@@ -9,6 +9,7 @@ class Item < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :favorites
   has_many :comments,dependent: :destroy
+  belongs_to :category
 
 
   def rentaled_by?(user)
