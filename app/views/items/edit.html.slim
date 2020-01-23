@@ -24,6 +24,8 @@
     .form-group.my-5
       =f.label :商品説明
       =f.text_area :content,row:5, class: 'form-control mx-auto mb-4',id: 'task_content item__textarea'
+      = f.select :category_id, Category.all.pluck(:name, :id), {}, class: 'form-control', prompt: "カテゴリを選択"
+      br
       a.mr-1 シェア開始日
       .items__badge
        .badge.badge-danger 必須

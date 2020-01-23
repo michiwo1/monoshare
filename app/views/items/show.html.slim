@@ -1,6 +1,7 @@
 =render partial: 'layouts/header',locals:{item:@item,borrowing_items:@borrowing_items,waiting_items:@waiting_items,applying_items:@applying_items,lending_items:@lending_items}
 .bg-white.mx-auto.mb-3.mt-5.pt-3.items__background
 
+  
   h2.font-weight-bold.mb-3.text-center = @item.tittle
   .text-center
     - if @item.image?
@@ -13,8 +14,6 @@
    a 〜
    a.mx-1= @item.share_end_date.strftime('%Y年%m月%d日')
   p.p-4.mx-5.text-left= simple_format @item.content,class:"items__comments"
-
-
 
   .text-center
     - if user_signed_in? && @item.user_id==current_user.id && @item.state == nil
@@ -42,17 +41,19 @@
          = link_to item_favorites_path(@item.id), method: :delete
           i.fas.fa-heart.items-card__card-like-icon
          a.pl-1= @item.favorites.count
-         a.ml-1 いいね済み
+         a.mx-1 いいね済み
      - else
        a
          = link_to item_favorites_path(@item.id), method: :post
           i.far.fa-heart.items-card__card-unlike-icon
          a.pl-1 = @item.favorites.count
-         a.ml-1 件のいいね
+         a.mx-1 件のいいね
   - else
       p
        i.far.fa-heart.items-card__card-unlike-icon
        = item.favorites.count
+  
+  a.ml-2 カテゴリー:#{@item.category.name}
 
 .comment-wrapper class=" mx-auto my-2 items__background"
  p.border-bottom コメント一覧

@@ -8,10 +8,10 @@
  .alert.alert-secondary.text-center.mx-auto.font-weight-bold.mt-3.alert__style.items__alert role="notice"
   =alert
 h2.pb-4.pt-3.d-flex.justify-content-center.bg-white.items__title  シェア一覧
-
 - @searchs.each_slice(4) do |items|
  card.card-deck.items-card
    - items.each do |item|
+      br
          .card.mb-4.items-card__card-size
           - if item.image?
             =link_to item

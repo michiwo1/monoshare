@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+if Category.all.blank?
+  Category.transaction do
+    %w(家電 書籍 日用品 衣類 ゲーム 文房具 乗り物 ヘルスケア ビューティー).each do |name|
+      Category.create!(name: name)
+    end
+  end
+end
+
+# rails db:seed

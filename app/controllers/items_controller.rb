@@ -168,7 +168,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:tittle,:content,:image,:image_cache,:state,:share_start_date, :share_end_date)
+    params.require(:item).permit(:tittle,:content,:image,:image_cache,:state,:share_start_date, :share_end_date, :category_id)
   end
 
 

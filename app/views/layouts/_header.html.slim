@@ -6,7 +6,8 @@ headr
    a.navbar-brand.font-weight-bold href="/" MONOシェア
   = search_form_for @search, url: search_index_path do |f|
     .form-inline
-     = f.text_field :tittle_cont, class: "form-control mr-sm-2", placeholder: '何かお探しですか？'
+     = f.text_field :tittle_cont, class: "form-control ", placeholder: '何かお探しですか？'
+     = f.select :category_id_eq, Category.all.pluck(:name, :id), { include_blank: 'カテゴリを選択' }, class: "form-control mr-sm-2"
      = f.submit '検索',class:'button btn btn-outline-success'
  .d-flex.justify-content-end.mr-5.header-color
 
