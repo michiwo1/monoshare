@@ -12,7 +12,7 @@
     = image_tag @item.image.url,class:' rounded shadow mx-auto item__image' if @item.image.present?
     = f.label "画像をアップロード" ,class:"pt-4 d-block"
     br/
-    = f.file_field :image,class:"border rounded p-5 "
+    = f.file_field :image,class: "border rounded p-5 "
     = f.hidden_field :image_cache
     .form-group.mt-5
       =f.label :シェア品名
@@ -23,8 +23,9 @@
       =f.label :商品説明
       =f.text_area :content,class: 'form-control mx-auto mb-4',id: 'task_content'
     .form-group
-      = f.label :category_id
-      = f.select :category_id, Category.all.pluck(:name, :id),{},class: 'form-control', prompt: "カテゴリを選択"
+      .select
+        = f.label :category_id
+        = f.select :category_id, Category.all.pluck(:name, :id),{prompt: "カテゴリを選択"},class: 'form-control select'
       br
       a.mr-1 シェア開始日
       .items__badge
