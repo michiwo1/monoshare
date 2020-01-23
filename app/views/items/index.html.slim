@@ -14,11 +14,13 @@ h2.pb-4.pt-3.d-flex.justify-content-center.bg-white.items__title  シェア一�
       br
          .card.mb-4.items-card__card-size
           - if item.image?
-            =link_to item
-              = image_tag item.image.url,class:"bd-placeholder-img card-img-top items-card__card-item-img"
+            .items-card__imgWrap
+              =link_to item
+                = image_tag item.image.url,class:"bd-placeholder-img card-img-top items-card__card-item-img"
           - else
-             =link_to item
-              = image_tag "/images/k.png",class:'bd-placeholder-img card-img-top items-card__card-item-img'
+            .items-card__imgWrap
+               =link_to item
+                = image_tag "/images/k.png",class:'bd-placeholder-img card-img-top items-card__card-item-img'
           .card-body
              - if item.user.image?
                =link_to user_path(item.user.id)

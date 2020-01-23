@@ -14,11 +14,13 @@ h1.mb-5.p-3 検索結果
    - items.each do |item|
          .card.mb-4.items-card__card-size
           - if item.image?
-            =link_to item
-              = image_tag item.image.url,class:"bd-placeholder-img card-img-top items-card__card-item-img"
+            .items-card__imgWrap
+              =link_to item
+                = image_tag item.image.url,class:"bd-placeholder-img card-img-top items-card__card-item-img"
           - else
-             =link_to item
-              = image_tag "/images/k.png",class:'bd-placeholder-img card-img-top items-card__card-item-img'
+            .items-card__imgWrap
+               =link_to item
+                = image_tag "/images/k.png",class:'bd-placeholder-img card-img-top items-card__card-item-img'
           .card-body
              - if item.user.image?
                =link_to user_path(item.user.id)

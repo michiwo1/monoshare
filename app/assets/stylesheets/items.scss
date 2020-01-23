@@ -63,9 +63,20 @@
    max-width: 21rem;
  }
 
+ &__imgWrap {
+   overflow: hidden;
+ }
+
  &__card-item-img {
    width: 100%;
    height: 220px;
+   display: block;
+	 transition-duration: 0.3s;
+ }
+
+ &__card-item-img:hover {
+   transform: scale(1.1);
+	 transition-duration: 0.3s;
  }
 
  &__card-user-img {
@@ -81,6 +92,8 @@
    color: #6c757d;
  }
 
+
+
 }
 
 .items-comments {
@@ -89,6 +102,8 @@
     height:30px;
   }
 }
+
+
 
 input[type=text] {
   width:400px;
