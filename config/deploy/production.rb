@@ -3,20 +3,13 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-# server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
+ server "18.177.93.205", user: "mochiwo1", roles: %w{app db web}
+ set :ssh_options, keys: '~/.ssh/monoshare.pem'
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
 # EC2サーバーのIP、EC2サーバーにログインするユーザー名、サーバーのロールを記述
-server '18.177.93.205',
-  user: 'michiwo1',
-  roles: %w{app db app},
-  ssh_options: {
-      port: 22,
-      user: 'michiwo1',
-      keys: %w(~/.ssh/monoshare.pem),
-      forward_agent: true
-  }
+
 
 # role-based syntax
 # ==================

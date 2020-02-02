@@ -6,7 +6,7 @@ set :repo_url, "git@github.com:michiwo1/monoshare.git"
 set :branch, 'master'
 set :deploy_to, '/var/www/monoshare'
 # シンボリックリンクをはるファイル。(※後述)
-set :linked_files, fetch(:linked_files, []).push('config/settings.yml')
+* set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/master.key')
 
 # シンボリックリンクをはるフォルダ。(※後述)
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
@@ -17,7 +17,7 @@ set :keep_releases, 5
 # rubyのバージョン
 set :rbenv_ruby, '2.5.0'
 
-#出力するログのレベル。
+
 set :log_level, :debug
 
 namespace :deploy do
