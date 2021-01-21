@@ -1,4 +1,5 @@
 # シェアハウス内での物のシェアサービス 　MONOシェア
+https://young-reef-91614.herokuapp.com/  
 
 サンプルアカウント  
 
@@ -41,5 +42,5 @@
 プログラミング言語: Ruby  
 フレームワーク: Ruby on Rails 6  
 バージョン管理: Git/GitHub  
-本番環境: AWS(EC2,Route53,SSL化,S3),PostgreSQL  
+本番環境: AWS(EC2,Route53,SSL化,S3),Heroku,PostgreSQL
 RSpec,Circle CI 自動テスト,docker導入  
